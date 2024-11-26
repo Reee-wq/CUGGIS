@@ -21,6 +21,12 @@
       <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
       <Extensions>ts</Extensions>
     </Filter>
+    <Filter Include="SpatialAnalysis">
+      <UniqueIdentifier>{5dc99abf-6494-42a5-864b-db6a87410313}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DecisionStructure">
+      <UniqueIdentifier>{1a452b52-c7b6-4e6c-9be2-10b7f5dcef21}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="CUGGIS.qrc">
@@ -35,14 +41,54 @@
     <ClCompile Include="CUGGIS.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ResourceCompile Include="$pro_name$.rc">
-    </ResourceCompile>
-    <None Include="$pro_name$.ico">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="$pro_name$.def">
-      <Filter>Resource Files</Filter>
-    </None>
-
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="QtGisLayerTreeViewMenuProvider.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ConvexHull.cpp">
+      <Filter>SpatialAnalysis</Filter>
+    </ClCompile>
+    <ClCompile Include="ID3andC4.cpp">
+      <Filter>DecisionStructure</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="QtGisLayerTreeViewMenuProvider.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="decisionstructure.h">
+      <Filter>DecisionStructure</Filter>
+    </ClInclude>
+    <ClInclude Include="require.h">
+      <Filter>DecisionStructure</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="ConvexHull.ui">
+      <Filter>SpatialAnalysis</Filter>
+    </QtUic>
+    <QtUic Include="ID3andC4.ui">
+      <Filter>DecisionStructure</Filter>
+    </QtUic>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ConvexHull.h">
+      <Filter>SpatialAnalysis</Filter>
+    </QtMoc>
+    <QtMoc Include="ID3andC4.h">
+      <Filter>DecisionStructure</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="watermelondatas.txt">
+      <Filter>DecisionStructure</Filter>
+    </Text>
   </ItemGroup>
 </Project>

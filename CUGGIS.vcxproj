@@ -15,8 +15,7 @@
     <Keyword>QtVS_v304</Keyword>
     <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">10.0</WindowsTargetPlatformVersion>
     <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">10.0</WindowsTargetPlatformVersion>
-    <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')"
-      >$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
+    <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
@@ -29,8 +28,8 @@
     <ConfigurationType>Application</ConfigurationType>
     <PlatformToolset>v142</PlatformToolset>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt_defaults.props')">
@@ -39,18 +38,15 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
     <QtInstall>osgeo4w-qgis-dev_QT5</QtInstall>
     <QtModules>core;gui;widgets</QtModules>
-    <QtBuildConfig>debug</QtBuildConfig>
+    <QtBuildConfig>release</QtBuildConfig>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
     <QtInstall>osgeo4w-qgis-dev_QT5</QtInstall>
-    <QtModules>core;gui;widgets</QtModules>
+    <QtModules>core;sql;network;gui;widgets;websockets</QtModules>
     <QtBuildConfig>release</QtBuildConfig>
   </PropertyGroup>
-  <Target Name="QtMsBuildNotFound"
-    BeforeTargets="CustomBuild;ClCompile"
-    Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
-    <Message Importance="High"
-      Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />
+  <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
+    <Message Importance="High" Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />
   </Target>
   <ImportGroup Label="ExtensionSettings" />
   <ImportGroup Label="Shared" />
@@ -64,9 +60,33 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <IncludePath>D:\osgeo4w-qgis-dev\QT5\include\QtSql;D:\osgeo4w-qgis-dev\QT5\include\QtNetwork;D:\osgeo4w-qgis-dev\QT5\include\QtSvg;D:\osgeo4w-qgis-dev\QT5\include\QtXml;D:\osgeo4w-qgis-dev\QT5\include\QtGui;D:\osgeo4w-qgis-dev\QT5\include\QtWidgets;D:\osgeo4w-qgis-dev\QT5\include\QtCore;D:\osgeo4w-qgis-dev\QT5\include;D:\osgeo4w-qgis-dev\3rdParty\include;D:\osgeo4w-qgis-dev\QGIS-ltr\include;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\osgeo4w-qgis-dev\QT5\lib;D:\osgeo4w-qgis-dev\QGIS-ltr\lib;D:\osgeo4w-qgis-dev\3rdParty\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <IncludePath>D:\osgeo4w-qgis-dev\QT5\include\QtXml;D:\osgeo4w-qgis-dev\QT5\include\QtSvg;D:\osgeo4w-qgis-dev\QT5\include\QtNetwork;D:\osgeo4w-qgis-dev\QT5\include\QtSql;D:\osgeo4w-qgis-dev\QT5\include\QtGui;D:\osgeo4w-qgis-dev\QT5\include\QtCore;D:\osgeo4w-qgis-dev\QT5\include;D:\osgeo4w-qgis-dev\3rdParty\include;D:\osgeo4w-qgis-dev\QGIS-ltr\include;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\CPPprogram\TreeLayer\QtGisDemo-main\QtGisDemo-main\3rdPart\QGISDev\lib;D:\osgeo4w-qgis-dev\QT5\lib;D:\osgeo4w-qgis-dev\QGIS-ltr\lib;D:\osgeo4w-qgis-dev\3rdParty\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\osgeo4w-qgis-dev\QT5\include\qt5keychain;D:\osgeo4w-qgis-dev\QT5\include\QtCrypto;D:\osgeo4w-qgis-dev\QT5\include\QtSvg;D:\osgeo4w-qgis-dev\3rdParty\include;D:\osgeo4w-qgis-dev\QT5\include\QtWidgets;D:\osgeo4w-qgis-dev\QT5\include\QtXml;D:\osgeo4w-qgis-dev\QT5\include\QtGui;D:\osgeo4w-qgis-dev\QT5\include\QtCore;D:\osgeo4w-qgis-dev\QT5\include;D:\osgeo4w-qgis-dev\QT5\include\Qt3DCore;D:\osgeo4w-qgis-dev\QGIS-ltr\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>D:\osgeo4w-qgis-dev\QT5\lib;D:\osgeo4w-qgis-dev\QGIS-ltr\lib;D:\osgeo4w-qgis-dev\3rdParty\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sqlite3.lib;qgis_core.lib;qgis_app.lib;qgis_gui.lib;qgis_analysis.lib;gdal_i.lib;Qt5Core.lib;Qt5Gui.lib;Qt5Widgets.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\osgeo4w-qgis-dev\QT5\include\qt5keychain;D:\osgeo4w-qgis-dev\QT5\include\QtCrypto;D:\osgeo4w-qgis-dev\3rdParty\include;D:\osgeo4w-qgis-dev\QT5\include\QtWidgets;D:\osgeo4w-qgis-dev\QT5\include\QtXml;D:\osgeo4w-qgis-dev\QT5\include\QtGui;D:\osgeo4w-qgis-dev\QT5\include\QtCore;D:\osgeo4w-qgis-dev\QT5\include;D:\osgeo4w-qgis-dev\QT5\include\Qt3DCore;D:\osgeo4w-qgis-dev\QGIS-ltr\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_USE_MATH_DEFINES;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>D:\osgeo4w-qgis-dev\QT5\lib;D:\osgeo4w-qgis-dev\QGIS-ltr\lib;D:\osgeo4w-qgis-dev\3rdParty\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sqlite3.lib;qgis_core.lib;qgis_app.lib;qgis_gui.lib;qgis_analysis.lib;gdal_i.lib;Qt5Core.lib;Qt5Gui.lib;Qt5Widgets.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
     <ClCompile>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
@@ -96,12 +116,35 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <QtRcc Include="CUGGIS.qrc"/>
-    <QtUic Include="CUGGIS.ui"/>
-    <QtMoc Include="CUGGIS.h"/>
-    <ClCompile Include="CUGGIS.cpp"/>
-    <ClCompile Include="main.cpp"/>
-
+    <ClCompile Include="ConvexHull.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="ID3andC4.cpp" />
+    <ClCompile Include="QtGisLayerTreeViewMenuProvider.cpp" />
+    <QtRcc Include="CUGGIS.qrc" />
+    <QtUic Include="ConvexHull.ui">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </QtUic>
+    <QtUic Include="CUGGIS.ui" />
+    <QtMoc Include="CUGGIS.h" />
+    <ClCompile Include="CUGGIS.cpp" />
+    <ClCompile Include="main.cpp" />
+    <QtUic Include="ID3andC4.ui" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ID3andC4.h" />
+    <ClInclude Include="require.h" />
+    <QtMoc Include="ConvexHull.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </QtMoc>
+    <ClInclude Include="decisionstructure.h" />
+    <ClInclude Include="QtGisLayerTreeViewMenuProvider.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="watermelondatas.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
