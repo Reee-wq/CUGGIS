@@ -1,14 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>qml;cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>qrc;rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
@@ -27,6 +19,16 @@
     <Filter Include="DecisionStructure">
       <UniqueIdentifier>{1a452b52-c7b6-4e6c-9be2-10b7f5dcef21}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainApp">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>qml;cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="MainApp\Label">
+      <UniqueIdentifier>{f663f10f-d24c-4a0e-bfe7-fd066c6eaecf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainApp\右键菜单">
+      <UniqueIdentifier>{d9eaf995-c368-4b7d-9074-8565405d6754}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="CUGGIS.qrc">
@@ -35,19 +37,13 @@
     <QtUic Include="CUGGIS.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtMoc Include="CUGGIS.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <ClCompile Include="CUGGIS.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>MainApp</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="QtGisLayerTreeViewMenuProvider.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>MainApp</Filter>
     </ClCompile>
     <ClCompile Include="ConvexHull.cpp">
       <Filter>SpatialAnalysis</Filter>
@@ -55,14 +51,17 @@
     <ClCompile Include="ID3andC4.cpp">
       <Filter>DecisionStructure</Filter>
     </ClCompile>
+    <ClCompile Include="LabelControl.cpp">
+      <Filter>MainApp\Label</Filter>
+    </ClCompile>
+    <ClCompile Include="QtGisLayerTreeViewMenuProvider.cpp">
+      <Filter>MainApp\右键菜单</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="QtGisLayerTreeViewMenuProvider.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="decisionstructure.h">
       <Filter>DecisionStructure</Filter>
     </ClInclude>
@@ -77,6 +76,9 @@
     <QtUic Include="ID3andC4.ui">
       <Filter>DecisionStructure</Filter>
     </QtUic>
+    <QtUic Include="LabelControl.ui">
+      <Filter>MainApp\Label</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="ConvexHull.h">
@@ -85,9 +87,21 @@
     <QtMoc Include="ID3andC4.h">
       <Filter>DecisionStructure</Filter>
     </QtMoc>
+    <QtMoc Include="CUGGIS.h">
+      <Filter>MainApp</Filter>
+    </QtMoc>
+    <QtMoc Include="LabelControl.h">
+      <Filter>MainApp\Label</Filter>
+    </QtMoc>
+    <QtMoc Include="QtGisLayerTreeViewMenuProvider.h">
+      <Filter>MainApp\右键菜单</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <Text Include="watermelondatas.txt">
+      <Filter>DecisionStructure</Filter>
+    </Text>
+    <Text Include="date.txt">
       <Filter>DecisionStructure</Filter>
     </Text>
   </ItemGroup>

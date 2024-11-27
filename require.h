@@ -47,38 +47,32 @@ void load_file(std::vector<Watermelon>& datas,
 		while (!istrm.eof()) {
 			istrm.getline(buffer, 128);
 			const char* id = strtok(buffer, " ");
-			const char* color = strtok(NULL, " ");
-			const char* pedicle = strtok(NULL, " ");
-			const char* sound = strtok(NULL, " ");
-			const char* texture = strtok(NULL, " ");
-			const char* umbilical = strtok(NULL, " ");
-			const char* touch = strtok(NULL, " ");
-			const char* good = strtok(NULL, " ");
+			const char* Weather = strtok(NULL, " ");
+			const char* Temperature = strtok(NULL, " ");
+			const char* Humidity = strtok(NULL, " ");
+			const char* Wind = strtok(NULL, " ");
+			const char* Date = strtok(NULL, " ");
 
 			// Check if the first line.
 			// The first line contains attributes of datas.
 			//
 			if (firstline) {
 				attributes.push_back(std::string(id));
-				attributes.push_back(std::string(color));
-				attributes.push_back(std::string(pedicle));
-				attributes.push_back(std::string(sound));
-				attributes.push_back(std::string(texture));
-				attributes.push_back(std::string(umbilical));
-				attributes.push_back(std::string(touch));
-				attributes.push_back(std::string(good));
+				attributes.push_back(std::string(Weather));
+				attributes.push_back(std::string(Temperature));
+				attributes.push_back(std::string(Humidity));
+				attributes.push_back(std::string(Wind));
+				attributes.push_back(std::string(Date));
 				firstline = false;
 			}
 			else {
 				Watermelon data;
 				data.id = std::string(id);
-				data.color = std::string(color);
-				data.pedicle = std::string(pedicle);
-				data.sound = std::string(sound);
-				data.texture = std::string(texture);
-				data.umbilical = std::string(umbilical);
-				data.touch = std::string(touch);
-				data.good = std::string(good);
+				data.Weather = std::string(Weather);
+				data.Temperature = std::string(Temperature);
+				data.Humidity = std::string(Humidity);
+				data.Wind = std::string(Wind);
+				data.Date = std::string(Date);
 				datas.push_back(data);
 			}
 		}
@@ -105,65 +99,48 @@ void match_properties(std::vector<Watermelon> datas,
 				break;
 			case 1:
 				if (!attrTmp.empty() &&
-				        std::find(attrTmp.begin(), attrTmp.end(), data.color) == attrTmp.end()) {
-					attrTmp.push_back(data.color);
+				        std::find(attrTmp.begin(), attrTmp.end(), data.Weather) == attrTmp.end()) {
+					attrTmp.push_back(data.Weather);
 				}
 				else if (attrTmp.empty()) {
-					attrTmp.push_back(data.color);
+					attrTmp.push_back(data.Weather);
 				}
 				break;
 			case 2:
 				if (!attrTmp.empty() &&
-				        std::find(attrTmp.begin(), attrTmp.end(), data.pedicle) == attrTmp.end()) {
-					attrTmp.push_back(data.pedicle);
+				        std::find(attrTmp.begin(), attrTmp.end(), data.Temperature) == attrTmp.end()) {
+					attrTmp.push_back(data.Temperature);
 				}
 				else if (attrTmp.empty()) {
-					attrTmp.push_back(data.pedicle);
+					attrTmp.push_back(data.Temperature);
 				}
 				break;
 			case 3:
 				if (!attrTmp.empty() &&
-				        std::find(attrTmp.begin(), attrTmp.end(), data.sound) == attrTmp.end()) {
-					attrTmp.push_back(data.sound);
+				        std::find(attrTmp.begin(), attrTmp.end(), data.Humidity) == attrTmp.end()) {
+					attrTmp.push_back(data.Humidity);
 				}
 				else if (attrTmp.empty()) {
-					attrTmp.push_back(data.sound);
+					attrTmp.push_back(data.Humidity);
 				}
 				break;
 			case 4:
 				if (!attrTmp.empty() &&
-				        std::find(attrTmp.begin(), attrTmp.end(), data.texture) == attrTmp.end()) {
-					attrTmp.push_back(data.texture);
+				        std::find(attrTmp.begin(), attrTmp.end(), data.Wind) == attrTmp.end()) {
+					attrTmp.push_back(data.Wind);
 				}
 				else if (attrTmp.empty()) {
-					attrTmp.push_back(data.texture);
+					attrTmp.push_back(data.Wind);
 				}
 				break;
+			
 			case 5:
 				if (!attrTmp.empty() &&
-				        std::find(attrTmp.begin(), attrTmp.end(), data.umbilical) == attrTmp.end()) {
-					attrTmp.push_back(data.umbilical);
+				        std::find(attrTmp.begin(), attrTmp.end(), data.Date) == attrTmp.end()) {
+					attrTmp.push_back(data.Date);
 				}
 				else if (attrTmp.empty()) {
-					attrTmp.push_back(data.umbilical);
-				}
-				break;
-			case 6:
-				if (!attrTmp.empty() &&
-				        std::find(attrTmp.begin(), attrTmp.end(), data.touch) == attrTmp.end()) {
-					attrTmp.push_back(data.touch);
-				}
-				else if (attrTmp.empty()) {
-					attrTmp.push_back(data.touch);
-				}
-				break;
-			case 7:
-				if (!attrTmp.empty() &&
-				        std::find(attrTmp.begin(), attrTmp.end(), data.good) == attrTmp.end()) {
-					attrTmp.push_back(data.good);
-				}
-				else if (attrTmp.empty()) {
-					attrTmp.push_back(data.good);
+					attrTmp.push_back(data.Date);
 				}
 				break;
 			default:
@@ -184,7 +161,7 @@ bool belongs_same_label(std::vector<Watermelon> datas,
 	}
 
 	for (auto iter = datas.begin(); iter != datas.end(); ++iter) {
-		if (iter->good != label) {
+		if (iter->Date != label) {
 			return false;
 		}
 	}
@@ -198,10 +175,10 @@ std::string majority_of_category(std::vector<Watermelon> datas)
 	int negativecategory = 0;
 
 	for (auto data : datas) {
-		if (data.good == "yes") {
+		if (data.Date == "yes") {
 			++positivecategory;
 		}
-		else if (data.good == "no") {
+		else if (data.Date == "no") {
 			++negativecategory;
 		}
 	}
@@ -210,7 +187,7 @@ std::string majority_of_category(std::vector<Watermelon> datas)
 
 double calculate_information_entropy(std::vector<Watermelon> datas,
                                      std::string mapAttr = "",
-                                     std::string attribute = "good")
+                                     std::string attribute = "Date")
 {
 	// Ent(D) = -∑(k=1, |Y|) p_k * log2(p_k)
 	//
@@ -222,10 +199,10 @@ double calculate_information_entropy(std::vector<Watermelon> datas,
 	// Beacuse of the datas only have two label.
 	// So entropy = positiveSample + negativeSample
 	//
-	if (attribute == "color") {
+	if (attribute == "Weather") {
 		for (auto data : datas) {
-			if (data.color == mapAttr) {
-				if (data.good == "yes") {
+			if (data.Weather == mapAttr) {
+				if (data.Date == "yes") {
 					++positive;
 				}
 				else {
@@ -235,10 +212,10 @@ double calculate_information_entropy(std::vector<Watermelon> datas,
 			}
 		}
 	}
-	else if (attribute == "pedicle") {
+	else if (attribute == "Temperature") {
 		for (auto data : datas) {
-			if (data.pedicle == mapAttr) {
-				if (data.good == "yes") {
+			if (data.Temperature == mapAttr) {
+				if (data.Date == "yes") {
 					++positive;
 				}
 				else {
@@ -248,10 +225,10 @@ double calculate_information_entropy(std::vector<Watermelon> datas,
 			}
 		}
 	}
-	else if (attribute == "sound") {
+	else if (attribute == "Humidity") {
 		for (auto data : datas) {
-			if (data.sound == mapAttr) {
-				if (data.good == "yes") {
+			if (data.Humidity == mapAttr) {
+				if (data.Date == "yes") {
 					++positive;
 				}
 				else {
@@ -261,10 +238,10 @@ double calculate_information_entropy(std::vector<Watermelon> datas,
 			}
 		}
 	}
-	else if (attribute == "texture") {
+	else if (attribute == "Wind") {
 		for (auto data : datas) {
-			if (data.texture == mapAttr) {
-				if (data.good == "yes") {
+			if (data.Wind == mapAttr) {
+				if (data.Date == "yes") {
 					++positive;
 				}
 				else {
@@ -274,35 +251,10 @@ double calculate_information_entropy(std::vector<Watermelon> datas,
 			}
 		}
 	}
-	else if (attribute == "umbilical") {
-		for (auto data : datas) {
-			if (data.umbilical == mapAttr) {
-				if (data.good == "yes") {
-					++positive;
-				}
-				else {
-					++negative;
-				}
-				++size;
-			}
-		}
-	}
-	else if (attribute == "touch") {
-		for (auto data : datas) {
-			if (data.touch == mapAttr) {
-				if (data.good == "yes") {
-					++positive;
-				}
-				else {
-					++negative;
-				}
-				++size;
-			}
-		}
-	}
-	else if (attribute == "good") {
+	
+	else if (attribute == "Date") {
 		size = datas.size();
-		auto judget = [&](Watermelon wm) { if (wm.good == "yes") { ++positive; } else { ++negative; }};
+		auto judget = [&](Watermelon wm) { if (wm.Date == "yes") { ++positive; } else { ++negative; }};
 		for_each(datas.begin(), datas.end(), judget);
 	}
 
@@ -323,48 +275,35 @@ double proportion(std::vector<Watermelon>& datas,
 	int size = datas.size();
 	double proportion = 0;
 
-	if (attribute == "color") {
+	if (attribute == "Weather") {
 		for (auto data : datas) {
-			if (data.color == mapAttr) {
+			if (data.Weather == mapAttr) {
 				++proportion;
 			}
 		}
 	}
-	else if (attribute == "pedicle") {
+	else if (attribute == "Temperature") {
 		for (auto data : datas) {
-			if (data.pedicle == mapAttr) {
+			if (data.Temperature == mapAttr) {
 				++proportion;
 			}
 		}
 	}
-	else if (attribute == "sound") {
+	else if (attribute == "Humidity") {
 		for (auto data : datas) {
-			if (data.sound == mapAttr) {
+			if (data.Humidity == mapAttr) {
 				++proportion;
 			}
 		}
 	}
-	else if (attribute == "texture") {
+	else if (attribute == "Wind") {
 		for (auto data : datas) {
-			if (data.texture == mapAttr) {
+			if (data.Wind == mapAttr) {
 				++proportion;
 			}
 		}
 	}
-	else if (attribute == "umbilical") {
-		for (auto data : datas) {
-			if (data.umbilical == mapAttr) {
-				++proportion;
-			}
-		}
-	}
-	else if (attribute == "touch") {
-		for (auto data : datas) {
-			if (data.touch == mapAttr) {
-				++proportion;
-			}
-		}
-	}
+	
 
 	proportion /= size;
 
@@ -422,49 +361,35 @@ std::vector<Watermelon> remain_watermelon_datas(std::vector<Watermelon> datas,
 {
 	std::vector<Watermelon> tmp;
 
-	if (attribute == "color") {
+	if (attribute == "Weather") {
 		for (auto data : datas) {
-			if (data.color == mapAttr) {
+			if (data.Weather == mapAttr) {
 				tmp.push_back(data);
 			}
 		}
 	}
-	else if (attribute == "pedicle") {
+	else if (attribute == "Temperature") {
 		for (auto data : datas) {
-			if (data.pedicle == mapAttr) {
+			if (data.Temperature == mapAttr) {
 				tmp.push_back(data);
 			}
 		}
 	}
-	else if (attribute == "sound") {
+	else if (attribute == "Humidity") {
 		for (auto data : datas) {
-			if (data.sound == mapAttr) {
+			if (data.Humidity == mapAttr) {
 				tmp.push_back(data);
 			}
 		}
 	}
-	else if (attribute == "texture") {
+	else if (attribute == "Wind") {
 		for (auto data : datas) {
-			if (data.texture == mapAttr) {
+			if (data.Wind == mapAttr) {
 				tmp.push_back(data);
 			}
 		}
 	}
-	else if (attribute == "umbilical") {
-		for (auto data : datas) {
-			if (data.umbilical == mapAttr) {
-				tmp.push_back(data);
-			}
-		}
-	}
-	else if (attribute == "touch") {
-		for (auto data : datas) {
-			if (data.touch == mapAttr) {
-				tmp.push_back(data);
-			}
-		}
-	}
-
+	
 	return tmp;
 }
 

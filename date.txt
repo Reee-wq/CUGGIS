@@ -1,0 +1,15 @@
+id Weather Temperature Humidity Wind Date
+1 Sunny Hot High Weak yes
+2 Sunny Hot High Strong no
+3 Overcast Hot High Weak no
+4 Rain Mild High Weak no
+5 Rain Cool Normal Weak no
+6 Rain Cool Normal Strong no
+7 Overcast Cool Normal Strong no
+8 Sunny Mild High Weak yes
+9 Sunny Cool Normal Weak yes
+10 Rain Mild Normal Weak yes
+11 Sunny Mild Normal Strong yes
+12 Overcast Mild High Strong yes
+13 Overcast Hot Normal Weak yes
+14 Rain Mild High Strong no

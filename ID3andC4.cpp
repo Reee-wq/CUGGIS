@@ -78,16 +78,16 @@ void CUGGIS::on_actionID3_triggered()
 	std::vector<std::string> attributes;
 	std::vector<std::string> train_attributes;
 
-	train_attributes.push_back("color");
-	train_attributes.push_back("pedicle");
-	train_attributes.push_back("sound");
-	train_attributes.push_back("texture");
-	train_attributes.push_back("umbilical");
-	train_attributes.push_back("touch");
+	train_attributes.push_back("Weather");
+	train_attributes.push_back("Temperature");
+	train_attributes.push_back("Humidity");
+	train_attributes.push_back("Wind");
+	//train_attributes.push_back("Date");
+	
 
 	// load the datas and attributes..
 	//
-	load_file(datas, attributes, "watermelondatas.txt");
+	load_file(datas, attributes, "date.txt");
 
 	std::map<std::string, std::vector<std::string>> map_attr;
 

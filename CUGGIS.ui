@@ -118,6 +118,10 @@
    <widget class="QWidget" name="dockWidgetContents_2"/>
   </widget>
   <action name="actionNewProject">
+   <property name="icon">
+    <iconset resource="CUGGIS.qrc">
+     <normaloff>:/CUGGIS/Resources/mActionFileNew.png</normaloff>:/CUGGIS/Resources/mActionFileNew.png</iconset>
+   </property>
    <property name="text">
     <string>新建</string>
    </property>
@@ -126,6 +130,10 @@
    </property>
   </action>
   <action name="actionOpenProject">
+   <property name="icon">
+    <iconset resource="CUGGIS.qrc">
+     <normaloff>:/CUGGIS/Resources/mActionFileOpen.png</normaloff>:/CUGGIS/Resources/mActionFileOpen.png</iconset>
+   </property>
    <property name="text">
     <string>打开</string>
    </property>
@@ -163,6 +171,10 @@
    </property>
   </action>
   <action name="actionAddVectorLayer">
+   <property name="icon">
+    <iconset resource="CUGGIS.qrc">
+     <normaloff>:/CUGGIS/Resources/mActionAddOgrLayer.png</normaloff>:/CUGGIS/Resources/mActionAddOgrLayer.png</iconset>
+   </property>
    <property name="text">
     <string>添加矢量图层</string>
    </property>
@@ -192,6 +204,8 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="CUGGIS.qrc"/>
+ </resources>
  <connections/>
 </ui>

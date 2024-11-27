@@ -26,9 +26,7 @@ private:
     QgsMapCanvas* m_mapCanvas = nullptr;
     //当前选中的图层
     QgsMapLayer* m_curMapLayer;
-    // 图层管理器
-    QgsLayerTreeView* m_layerTreeView;
-    QgsLayerTreeMapCanvasBridge* m_layerTreeCanvasBridge;
+   
    
     void autoSelectAddedLayer(QList<QgsMapLayer*> layers);
     //矢量，地理处理
@@ -38,6 +36,9 @@ private:
     ID3andC4* m_ID3andC4;
 
 public:
+    // 图层管理器
+    QgsLayerTreeView* m_layerTreeView;
+    QgsLayerTreeMapCanvasBridge* m_layerTreeCanvasBridge;
     // 初始化图层管理器
     void initLayerTreeView();
     //图层
@@ -45,6 +46,7 @@ public:
 public slots:
  void on_actionLayerTreeControl_triggered();
  void on_actionAddVectorLayer_triggered();
+
 
  // 移除图层
  void removeLayer();

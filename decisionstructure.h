@@ -10,20 +10,17 @@ class Watermelon
 {
 public:
 	std::string id;							// 编号
-	std::string color;						// 颜色
-	std::string pedicle;					// 根蒂
-	std::string sound;						// 声音
-	std::string texture;					// 纹理
-	std::string umbilical;					// 脐部
-	std::string touch;						// 触感
-	std::string good;						// 好瓜？
+	std::string Weather;						// 天气
+	std::string Temperature;					// 温度
+	std::string Humidity;						// 湿度
+	std::string Wind;							// 风
+	std::string Date;						// 能否约会
 
 	friend
 	std::ostream& operator<<(std::ostream& os, const Watermelon& wm)
 	{
-		os << wm.id << " " << wm.color << " " << wm.pedicle << " "
-		   << wm.sound << " " << wm.texture << " " << wm.umbilical << " "
-		   << wm.touch << " " << wm.good;
+		os << wm.id << " " << wm.Weather << " " << wm.Temperature << " "
+		   << wm.Humidity << " " << wm.Wind << " " << wm.Date ;
 		os << std::endl;
 		return os;
 	}

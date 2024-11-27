@@ -120,6 +120,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="ID3andC4.cpp" />
+    <ClCompile Include="LabelControl.cpp" />
     <ClCompile Include="QtGisLayerTreeViewMenuProvider.cpp" />
     <QtRcc Include="CUGGIS.qrc" />
     <QtUic Include="ConvexHull.ui">
@@ -130,20 +131,23 @@
     <ClCompile Include="CUGGIS.cpp" />
     <ClCompile Include="main.cpp" />
     <QtUic Include="ID3andC4.ui" />
+    <QtUic Include="LabelControl.ui" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="ID3andC4.h" />
+    <QtMoc Include="LabelControl.h" />
     <ClInclude Include="require.h" />
     <QtMoc Include="ConvexHull.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </QtMoc>
     <ClInclude Include="decisionstructure.h" />
-    <ClInclude Include="QtGisLayerTreeViewMenuProvider.h" />
+    <QtMoc Include="QtGisLayerTreeViewMenuProvider.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="date.txt" />
     <Text Include="watermelondatas.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
