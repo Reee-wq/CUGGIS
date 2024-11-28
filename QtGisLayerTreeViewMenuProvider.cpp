@@ -11,7 +11,6 @@
 #include "QgsLayerTreeViewDefaultActions.h"
 #include "qgsvectorlayerproperties.h"
 #include"labelcontrol.h"
-#include "labelShow.h"
 #include "qgspallabeling.h"
 #include "qgsvectorlayerlabeling.h"
 

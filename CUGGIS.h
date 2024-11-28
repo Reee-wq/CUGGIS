@@ -4,8 +4,10 @@
 #include "ui_CUGGIS.h"
 //#include "ConvexHull.h"
 #include "ID3andC4.h"
+#include "qgsmaplayer.h"
 #include <qgsmapcanvas.h>
 #include <qgslayertreeview.h>
+#include <QLabel>
 #include <qgslayertreemodel.h>
 #include <qgslayertreemapcanvasbridge.h>
 #include <qgslayertreeviewdefaultactions.h>
@@ -29,6 +31,8 @@ private:
    
    
     void autoSelectAddedLayer(QList<QgsMapLayer*> layers);
+    //1.5动态投影，鼠标悬停显示坐标
+    QLabel* m_statusBarLabel;
     //矢量，地理处理
     //凸包
    // ConvexHull* m_convexHull;
@@ -39,13 +43,22 @@ public:
     // 图层管理器
     QgsLayerTreeView* m_layerTreeView;
     QgsLayerTreeMapCanvasBridge* m_layerTreeCanvasBridge;
-    // 初始化图层管理器
+    // 1.2初始化图层管理器
     void initLayerTreeView();
     //图层
     void onCurrentLayerChanged(QgsMapLayer* layer);
+
+   //1.5动态投影
+    void setLayersCrsToFirstLayerCrs();
+   /* void showCoordinates(const QgsPointXY& coordinate);*/
 public slots:
+    //1.1图层，图层树目录和添加矢量文件
  void on_actionLayerTreeControl_triggered();
  void on_actionAddVectorLayer_triggered();
+ //1.1图层，添加栅格文件
+ void on_actionAddRasterLayer_triggered();
+ //1.3图层，图层属性
+ void on_actionLayerProperties_triggered();
 
 
  // 移除图层

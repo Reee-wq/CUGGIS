@@ -119,9 +119,13 @@
     <ClCompile Include="ConvexHull.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="DynamicProj.cpp" />
     <ClCompile Include="ID3andC4.cpp" />
     <ClCompile Include="LabelControl.cpp" />
+    <ClCompile Include="LayerPropertiesWidget.cpp" />
     <ClCompile Include="QtGisLayerTreeViewMenuProvider.cpp" />
+    <ClCompile Include="RasterLayerPropertiesWidget.cpp" />
+    <ClCompile Include="VectorLayerPropertiesWidget.cpp" />
     <QtRcc Include="CUGGIS.qrc" />
     <QtUic Include="ConvexHull.ui">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
@@ -137,8 +141,11 @@
     <None Include="cpp.hint" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="RasterLayerPropertiesWidget.h" />
+    <QtMoc Include="VectorLayerPropertiesWidget.h" />
     <QtMoc Include="ID3andC4.h" />
     <QtMoc Include="LabelControl.h" />
+    <QtMoc Include="LayerPropertiesWidget.h" />
     <ClInclude Include="require.h" />
     <QtMoc Include="ConvexHull.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>

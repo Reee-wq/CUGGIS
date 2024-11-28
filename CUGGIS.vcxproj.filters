@@ -29,6 +29,12 @@
     <Filter Include="MainApp\右键菜单">
       <UniqueIdentifier>{d9eaf995-c368-4b7d-9074-8565405d6754}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainApp\透明度">
+      <UniqueIdentifier>{44ce85c8-ef16-4b36-a3e3-ab619d2d67fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainApp\动态投影">
+      <UniqueIdentifier>{7d21dcac-d6e1-4812-adeb-f78cc91ec04e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="CUGGIS.qrc">
@@ -56,6 +62,18 @@
     </ClCompile>
     <ClCompile Include="QtGisLayerTreeViewMenuProvider.cpp">
       <Filter>MainApp\右键菜单</Filter>
+    </ClCompile>
+    <ClCompile Include="LayerPropertiesWidget.cpp">
+      <Filter>MainApp\透明度</Filter>
+    </ClCompile>
+    <ClCompile Include="VectorLayerPropertiesWidget.cpp">
+      <Filter>MainApp\透明度</Filter>
+    </ClCompile>
+    <ClCompile Include="RasterLayerPropertiesWidget.cpp">
+      <Filter>MainApp\透明度</Filter>
+    </ClCompile>
+    <ClCompile Include="DynamicProj.cpp">
+      <Filter>MainApp\动态投影</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -95,6 +113,15 @@
     </QtMoc>
     <QtMoc Include="QtGisLayerTreeViewMenuProvider.h">
       <Filter>MainApp\右键菜单</Filter>
+    </QtMoc>
+    <QtMoc Include="RasterLayerPropertiesWidget.h">
+      <Filter>MainApp\透明度</Filter>
+    </QtMoc>
+    <QtMoc Include="VectorLayerPropertiesWidget.h">
+      <Filter>MainApp\透明度</Filter>
+    </QtMoc>
+    <QtMoc Include="LayerPropertiesWidget.h">
+      <Filter>MainApp\透明度</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

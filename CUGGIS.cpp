@@ -6,16 +6,19 @@
 #include "qboxlayout.h"
 #include "QgsLayerTreeViewDefaultActions.h"
 #include "QtGisLayerTreeViewMenuProvider.h"
+#include "qgsrasterlayer.h"
 #include "qgslayertreeregistrybridge.h"
 #include "qgslayertreegroup.h"
-
+#include "qgsmaplayer.h"
 #include <QTabWidget>
 #include <QProgressBar>
 #include <QGridLayout>
 #include <QListWidget>
 #include <QGroupBox>
 #include "QtGisLayerTreeViewMenuProvider.h"
-
+#include "VectorLayerPropertiesWidget.h"
+#include "RasterLayerPropertiesWidget.h"
+#include "qgslayerpropertieswidget.h"
 #include "qgsmapcanvas.h"
 #include "qgsapplication.h"
 #include "qgsstatusbar.h"
@@ -30,6 +33,8 @@
 #include "QgsLayerTreeLayer.h"
 #include "QgsLayerTreeViewDefaultActions.h"
 #include "QgsLayerTreeUtils.h"
+#include "qgslayerpropertieswidget.h"
+
 
 CUGGIS::CUGGIS(QWidget *parent)
     : QMainWindow(parent)
@@ -99,6 +104,60 @@ void CUGGIS::on_actionAddVectorLayer_triggered()
 	m_curMapLayer = layerList[0];
 	QgsProject::instance()->addMapLayers(layerList);
 	m_mapCanvas->refresh();
+}
+
+void CUGGIS::on_actionAddRasterLayer_triggered()
+{
+	QStringList layerPathList = QFileDialog::getOpenFileNames(this, QStringLiteral("选择栅格数据"), "", "Image (*.img *.tif *.tiff)");
+	QList<QgsMapLayer*> layerList;
+	for (const QString& layerPath : layerPathList)
+	{
+		QFileInfo fi(layerPath);
+		if (!fi.exists()) { return; }
+		QString layerBaseName = fi.baseName(); // 图层名称
+
+		QgsRasterLayer* rasterLayer = new QgsRasterLayer(layerPath, layerBaseName);
+		if (!rasterLayer) { return; }
+		if (!rasterLayer->isValid())
+		{
+			QMessageBox::information(0, "", "layer is invalid");
+			return;
+		}
+		layerList << rasterLayer;
+	}
+	m_curMapLayer = layerList[0];
+	QgsProject::instance()->addMapLayers(layerList);
+	m_mapCanvas->refresh();
+}
+
+void CUGGIS::on_actionLayerProperties_triggered()
+{
+
+	if (m_curMapLayer)
+	{
+		// 检查图层类型
+		if (m_curMapLayer->type() == QgsMapLayerType::VectorLayer)
+		{
+			// 打开矢量图层属性管理窗口
+			VectorLayerPropertiesWidget* widget = new VectorLayerPropertiesWidget(m_curMapLayer, this);
+			widget->exec();
+		}
+		else if (m_curMapLayer->type() == QgsMapLayerType::RasterLayer)
+		{
+			// 打开栅格图层属性管理窗口
+			RasterLayerPropertiesWidget* widget = new RasterLayerPropertiesWidget(m_curMapLayer, this);
+			widget->exec();
+		}
+		else
+		{
+			qDebug() << "The active layer is not a vector or raster layer.";
+		}
+	}
+	else
+	{
+		qDebug() << "No active layer found.";
+	}
+	
 }
 
 void CUGGIS::removeLayer()

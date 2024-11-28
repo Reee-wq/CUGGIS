@@ -55,8 +55,11 @@
       <string>添加图层</string>
      </property>
      <addaction name="actionAddVectorLayer"/>
+     <addaction name="actionAddRasterLayer"/>
     </widget>
     <addaction name="AddLayer"/>
+    <addaction name="separator"/>
+    <addaction name="actionLayerProperties"/>
    </widget>
    <widget class="QMenu" name="menuVector">
     <property name="title">
@@ -200,6 +203,20 @@
   <action name="actionID3">
    <property name="text">
     <string>ID3</string>
+   </property>
+  </action>
+  <action name="actionLayerProperties">
+   <property name="text">
+    <string>图层属性</string>
+   </property>
+  </action>
+  <action name="actionAddRasterLayer">
+   <property name="icon">
+    <iconset resource="CUGGIS.qrc">
+     <normaloff>:/CUGGIS/Resources/mActionAddRasterLayer.png</normaloff>:/CUGGIS/Resources/mActionAddRasterLayer.png</iconset>
+   </property>
+   <property name="text">
+    <string>添加栅格图层</string>
    </property>
   </action>
  </widget>
