@@ -30,5 +30,12 @@
         <file>Resources/mActionZoomOut.png</file>
         <file>Resources/mSourceFields.png</file>
         <file>Resources/srs.db</file>
+        <file>Resources/ArrorCursor.png</file>
+        <file>Resources/多边形.png</file>
+        <file>Resources/缓冲区.png</file>
+        <file>Resources/剪切.png</file>
+        <file>Resources/凸包.png</file>
+        <file>Resources/形状-矩形.png</file>
+        <file>Resources/形状-椭圆形.png</file>
     </qresource>
 </RCC>

@@ -81,10 +81,13 @@
       <AdditionalIncludeDirectories>D:\osgeo4w-qgis-dev\QT5\include\qt5keychain;D:\osgeo4w-qgis-dev\QT5\include\QtCrypto;D:\osgeo4w-qgis-dev\3rdParty\include;D:\osgeo4w-qgis-dev\QT5\include\QtWidgets;D:\osgeo4w-qgis-dev\QT5\include\QtXml;D:\osgeo4w-qgis-dev\QT5\include\QtGui;D:\osgeo4w-qgis-dev\QT5\include\QtCore;D:\osgeo4w-qgis-dev\QT5\include;D:\osgeo4w-qgis-dev\QT5\include\Qt3DCore;D:\osgeo4w-qgis-dev\QGIS-ltr\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_USE_MATH_DEFINES;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <Optimization>Disabled</Optimization>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>D:\osgeo4w-qgis-dev\QT5\lib;D:\osgeo4w-qgis-dev\QGIS-ltr\lib;D:\osgeo4w-qgis-dev\3rdParty\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sqlite3.lib;qgis_core.lib;qgis_app.lib;qgis_gui.lib;qgis_analysis.lib;gdal_i.lib;Qt5Core.lib;Qt5Gui.lib;Qt5Widgets.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sqlite3.lib;qgis_core.lib;qgis_app.lib;qgis_gui.lib;qgis_analysis.lib;gdal_i.lib;Qt5Core.lib;Qt5Gui.lib;Qt5Widgets.lib;Qt5Xlsx.lib
+;geos_c.lib
+;geos.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
@@ -110,23 +113,41 @@
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
-      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Buffer.cpp" />
+    <ClCompile Include="CircleCut.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="ConvexHull.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="DynamicProj.cpp" />
     <ClCompile Include="ID3andC4.cpp" />
     <ClCompile Include="LabelControl.cpp" />
+    <ClCompile Include="Layering.cpp" />
     <ClCompile Include="LayerPropertiesWidget.cpp" />
+    <ClCompile Include="Maptool.cpp" />
+    <ClCompile Include="MyDefaultMapTool.cpp" />
+    <ClCompile Include="PolygonCut.cpp" />
+    <ClCompile Include="project.cpp" />
+    <ClCompile Include="qgsmaptoolselect.cpp" />
     <ClCompile Include="QtGisLayerTreeViewMenuProvider.cpp" />
     <ClCompile Include="RasterLayerPropertiesWidget.cpp" />
+    <ClCompile Include="SHPtoGRID.cpp" />
+    <ClCompile Include="SpatialAnalysisTool.cpp" />
+    <ClCompile Include="StyleManager.cpp" />
+    <ClCompile Include="SymbolAction.cpp" />
+    <ClCompile Include="SymbolExport.cpp" />
+    <ClCompile Include="SymbolManager.cpp" />
+    <ClCompile Include="SymbolModify.cpp" />
     <ClCompile Include="VectorLayerPropertiesWidget.cpp" />
     <QtRcc Include="CUGGIS.qrc" />
+    <QtUic Include="Buffer.ui" />
     <QtUic Include="ConvexHull.ui">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </QtUic>
@@ -136,16 +157,34 @@
     <ClCompile Include="main.cpp" />
     <QtUic Include="ID3andC4.ui" />
     <QtUic Include="LabelControl.ui" />
+    <QtUic Include="Layering.ui" />
+    <QtUic Include="SHPtoGRID.ui" />
+    <QtUic Include="SymbolExport.ui" />
+    <QtUic Include="SymbolManager.ui" />
+    <QtUic Include="SymbolModify.ui" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="Buffer.h" />
+    <QtMoc Include="CircleCut.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+    </QtMoc>
+    <QtMoc Include="qgsmaptoolselect.h" />
+    <QtMoc Include="PolygonCut.h" />
+    <QtMoc Include="SHPtoGRID.h" />
+    <ClInclude Include="StyleManager.h" />
+    <QtMoc Include="SymbolModify.h" />
+    <QtMoc Include="SymbolManager.h" />
+    <QtMoc Include="SymbolExport.h" />
     <QtMoc Include="RasterLayerPropertiesWidget.h" />
     <QtMoc Include="VectorLayerPropertiesWidget.h" />
     <QtMoc Include="ID3andC4.h" />
     <QtMoc Include="LabelControl.h" />
     <QtMoc Include="LayerPropertiesWidget.h" />
+    <QtMoc Include="Layering.h" />
+    <ClInclude Include="MyDefaultMapTool.h" />
     <ClInclude Include="require.h" />
     <QtMoc Include="ConvexHull.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>

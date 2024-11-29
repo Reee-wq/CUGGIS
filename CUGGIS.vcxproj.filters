@@ -13,27 +13,39 @@
       <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
       <Extensions>ts</Extensions>
     </Filter>
-    <Filter Include="SpatialAnalysis">
-      <UniqueIdentifier>{5dc99abf-6494-42a5-864b-db6a87410313}</UniqueIdentifier>
-    </Filter>
     <Filter Include="DecisionStructure">
       <UniqueIdentifier>{1a452b52-c7b6-4e6c-9be2-10b7f5dcef21}</UniqueIdentifier>
     </Filter>
-    <Filter Include="MainApp">
+    <Filter Include="2SymbolManager">
+      <UniqueIdentifier>{371a4175-3916-44db-b034-4e78e91a4f43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="1MainApp">
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>qml;cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="MainApp\Label">
+    <Filter Include="1MainApp\Label">
       <UniqueIdentifier>{f663f10f-d24c-4a0e-bfe7-fd066c6eaecf}</UniqueIdentifier>
     </Filter>
-    <Filter Include="MainApp\右键菜单">
+    <Filter Include="1MainApp\右键菜单">
       <UniqueIdentifier>{d9eaf995-c368-4b7d-9074-8565405d6754}</UniqueIdentifier>
     </Filter>
-    <Filter Include="MainApp\透明度">
+    <Filter Include="1MainApp\透明度">
       <UniqueIdentifier>{44ce85c8-ef16-4b36-a3e3-ab619d2d67fa}</UniqueIdentifier>
     </Filter>
-    <Filter Include="MainApp\动态投影">
+    <Filter Include="1MainApp\动态投影">
       <UniqueIdentifier>{7d21dcac-d6e1-4812-adeb-f78cc91ec04e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="1MainApp\1.1工程">
+      <UniqueIdentifier>{b5c2a122-a792-4c3e-a6dd-9a82ace50793}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="1MainApp\1.6">
+      <UniqueIdentifier>{c42dd7aa-f7d0-45f7-9f1f-d04f0ed3369d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3QgsTool">
+      <UniqueIdentifier>{0487c370-e9a4-47a8-b4d0-3f5791ae04a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="4SpatialAnalysis">
+      <UniqueIdentifier>{5dc99abf-6494-42a5-864b-db6a87410313}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -44,36 +56,81 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <ClCompile Include="CUGGIS.cpp">
-      <Filter>MainApp</Filter>
+      <Filter>1MainApp</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
-      <Filter>MainApp</Filter>
+      <Filter>1MainApp</Filter>
     </ClCompile>
     <ClCompile Include="ConvexHull.cpp">
-      <Filter>SpatialAnalysis</Filter>
+      <Filter>4SpatialAnalysis</Filter>
     </ClCompile>
     <ClCompile Include="ID3andC4.cpp">
       <Filter>DecisionStructure</Filter>
     </ClCompile>
     <ClCompile Include="LabelControl.cpp">
-      <Filter>MainApp\Label</Filter>
+      <Filter>1MainApp\Label</Filter>
     </ClCompile>
     <ClCompile Include="QtGisLayerTreeViewMenuProvider.cpp">
-      <Filter>MainApp\右键菜单</Filter>
+      <Filter>1MainApp\右键菜单</Filter>
     </ClCompile>
     <ClCompile Include="LayerPropertiesWidget.cpp">
-      <Filter>MainApp\透明度</Filter>
+      <Filter>1MainApp\透明度</Filter>
     </ClCompile>
     <ClCompile Include="VectorLayerPropertiesWidget.cpp">
-      <Filter>MainApp\透明度</Filter>
+      <Filter>1MainApp\透明度</Filter>
     </ClCompile>
     <ClCompile Include="RasterLayerPropertiesWidget.cpp">
-      <Filter>MainApp\透明度</Filter>
+      <Filter>1MainApp\透明度</Filter>
     </ClCompile>
     <ClCompile Include="DynamicProj.cpp">
-      <Filter>MainApp\动态投影</Filter>
+      <Filter>1MainApp\动态投影</Filter>
+    </ClCompile>
+    <ClCompile Include="project.cpp">
+      <Filter>1MainApp\1.1工程</Filter>
+    </ClCompile>
+    <ClCompile Include="Maptool.cpp">
+      <Filter>1MainApp\1.6</Filter>
+    </ClCompile>
+    <ClCompile Include="MyDefaultMapTool.cpp">
+      <Filter>1MainApp\1.6</Filter>
+    </ClCompile>
+    <ClCompile Include="Layering.cpp">
+      <Filter>2SymbolManager</Filter>
+    </ClCompile>
+    <ClCompile Include="StyleManager.cpp">
+      <Filter>2SymbolManager</Filter>
+    </ClCompile>
+    <ClCompile Include="SymbolExport.cpp">
+      <Filter>2SymbolManager</Filter>
+    </ClCompile>
+    <ClCompile Include="SymbolManager.cpp">
+      <Filter>2SymbolManager</Filter>
+    </ClCompile>
+    <ClCompile Include="SymbolModify.cpp">
+      <Filter>2SymbolManager</Filter>
+    </ClCompile>
+    <ClCompile Include="SymbolAction.cpp">
+      <Filter>2SymbolManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Buffer.cpp">
+      <Filter>4SpatialAnalysis</Filter>
+    </ClCompile>
+    <ClCompile Include="SpatialAnalysisTool.cpp">
+      <Filter>4SpatialAnalysis</Filter>
+    </ClCompile>
+    <ClCompile Include="CircleCut.cpp">
+      <Filter>4SpatialAnalysis</Filter>
+    </ClCompile>
+    <ClCompile Include="qgsmaptoolselect.cpp">
+      <Filter>4SpatialAnalysis</Filter>
+    </ClCompile>
+    <ClCompile Include="PolygonCut.cpp">
+      <Filter>4SpatialAnalysis</Filter>
+    </ClCompile>
+    <ClCompile Include="SHPtoGRID.cpp">
+      <Filter>4SpatialAnalysis</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -86,42 +143,93 @@
     <ClInclude Include="require.h">
       <Filter>DecisionStructure</Filter>
     </ClInclude>
+    <ClInclude Include="MyDefaultMapTool.h">
+      <Filter>1MainApp\1.6</Filter>
+    </ClInclude>
+    <ClInclude Include="StyleManager.h">
+      <Filter>2SymbolManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="ConvexHull.ui">
-      <Filter>SpatialAnalysis</Filter>
+      <Filter>4SpatialAnalysis</Filter>
     </QtUic>
     <QtUic Include="ID3andC4.ui">
       <Filter>DecisionStructure</Filter>
     </QtUic>
     <QtUic Include="LabelControl.ui">
-      <Filter>MainApp\Label</Filter>
+      <Filter>1MainApp\Label</Filter>
+    </QtUic>
+    <QtUic Include="Layering.ui">
+      <Filter>2SymbolManager</Filter>
+    </QtUic>
+    <QtUic Include="SymbolExport.ui">
+      <Filter>2SymbolManager</Filter>
+    </QtUic>
+    <QtUic Include="SymbolManager.ui">
+      <Filter>2SymbolManager</Filter>
+    </QtUic>
+    <QtUic Include="SymbolModify.ui">
+      <Filter>2SymbolManager</Filter>
+    </QtUic>
+    <QtUic Include="Buffer.ui">
+      <Filter>4SpatialAnalysis</Filter>
+    </QtUic>
+    <QtUic Include="SHPtoGRID.ui">
+      <Filter>4SpatialAnalysis</Filter>
     </QtUic>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="ConvexHull.h">
-      <Filter>SpatialAnalysis</Filter>
+      <Filter>4SpatialAnalysis</Filter>
     </QtMoc>
     <QtMoc Include="ID3andC4.h">
       <Filter>DecisionStructure</Filter>
     </QtMoc>
     <QtMoc Include="CUGGIS.h">
-      <Filter>MainApp</Filter>
+      <Filter>1MainApp</Filter>
     </QtMoc>
     <QtMoc Include="LabelControl.h">
-      <Filter>MainApp\Label</Filter>
+      <Filter>1MainApp\Label</Filter>
     </QtMoc>
     <QtMoc Include="QtGisLayerTreeViewMenuProvider.h">
-      <Filter>MainApp\右键菜单</Filter>
+      <Filter>1MainApp\右键菜单</Filter>
     </QtMoc>
     <QtMoc Include="RasterLayerPropertiesWidget.h">
-      <Filter>MainApp\透明度</Filter>
+      <Filter>1MainApp\透明度</Filter>
     </QtMoc>
     <QtMoc Include="VectorLayerPropertiesWidget.h">
-      <Filter>MainApp\透明度</Filter>
+      <Filter>1MainApp\透明度</Filter>
     </QtMoc>
     <QtMoc Include="LayerPropertiesWidget.h">
-      <Filter>MainApp\透明度</Filter>
+      <Filter>1MainApp\透明度</Filter>
+    </QtMoc>
+    <QtMoc Include="Layering.h">
+      <Filter>2SymbolManager</Filter>
+    </QtMoc>
+    <QtMoc Include="SymbolExport.h">
+      <Filter>2SymbolManager</Filter>
+    </QtMoc>
+    <QtMoc Include="SymbolManager.h">
+      <Filter>2SymbolManager</Filter>
+    </QtMoc>
+    <QtMoc Include="SymbolModify.h">
+      <Filter>2SymbolManager</Filter>
+    </QtMoc>
+    <QtMoc Include="Buffer.h">
+      <Filter>4SpatialAnalysis</Filter>
+    </QtMoc>
+    <QtMoc Include="CircleCut.h">
+      <Filter>4SpatialAnalysis</Filter>
+    </QtMoc>
+    <QtMoc Include="qgsmaptoolselect.h">
+      <Filter>4SpatialAnalysis</Filter>
+    </QtMoc>
+    <QtMoc Include="PolygonCut.h">
+      <Filter>4SpatialAnalysis</Filter>
+    </QtMoc>
+    <QtMoc Include="SHPtoGRID.h">
+      <Filter>4SpatialAnalysis</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

@@ -34,7 +34,9 @@ QMenu* QtGisLayerTreeViewMenuProvider::createContextMenu()
 	if (!index.isValid()) return nullptr;
 	QgsLayerTreeNode* node = mView->layerTreeModel()->index2node(index);
 	if (QgsLayerTree::isGroup(node)) {
-		menu->addAction(mView->defaultActions()->actionRemoveGroupOrLayer(menu));
+		QAction* removeGroupAction = mView->defaultActions()->actionRemoveGroupOrLayer(menu);
+		removeGroupAction->setIcon(QIcon(QStringLiteral("D:/CPPprogram/CUGGIS/CUGGIS/Resources/mActionRemoveLayer.png"))); // ÉèÖÃÍ¼±ê
+		menu->addAction(removeGroupAction);
 		menu->addAction(mView->defaultActions()->actionRenameGroupOrLayer(menu));
 	}
 	else if(QgsLayerTree::isLayer(node)){

@@ -9,6 +9,7 @@
 #include "qgsrasterlayer.h"
 #include "qgslayertreeregistrybridge.h"
 #include "qgslayertreegroup.h"
+
 #include "qgsmaplayer.h"
 #include <QTabWidget>
 #include <QProgressBar>
@@ -16,6 +17,7 @@
 #include <QListWidget>
 #include <QGroupBox>
 #include "QtGisLayerTreeViewMenuProvider.h"
+
 #include "VectorLayerPropertiesWidget.h"
 #include "RasterLayerPropertiesWidget.h"
 #include "qgslayerpropertieswidget.h"
@@ -25,6 +27,7 @@
 #include "qgstaskmanagerwidget.h"
 #include "qgsdoublespinbox.h"
 #include "qgsdockwidget.h"
+
 #include "QgsLayerTreeView.h"
 #include "QgsLayerTreeModel.h"
 #include "QgsLayerTreeMapCanvasBridge.h"
@@ -33,7 +36,10 @@
 #include "QgsLayerTreeLayer.h"
 #include "QgsLayerTreeViewDefaultActions.h"
 #include "QgsLayerTreeUtils.h"
-#include "qgslayerpropertieswidget.h"
+
+//#include "qgslayerpropertieswidget.h"
+#include "qfilesystemmodel.h"
+
 
 
 CUGGIS::CUGGIS(QWidget *parent)
@@ -48,7 +54,7 @@ CUGGIS::CUGGIS(QWidget *parent)
 	m_mapCanvas = new QgsMapCanvas();
 	this->setCentralWidget(m_mapCanvas);
 	// 初始化图层管理器
-	m_layerTreeView = new QgsLayerTreeView(this);
+	//m_layerTreeView = new QgsLayerTreeView(this);
 	initLayerTreeView();
 	m_curMapLayer = nullptr;
 	//矢量，地理处理
@@ -56,6 +62,20 @@ CUGGIS::CUGGIS(QWidget *parent)
 	//m_convexHull = nullptr;
 	//数据处理，ID3andC4
 	m_ID3andC4 = nullptr;
+	connect(ui.actionQgsStylelibMng, &QAction::triggered, this, &CUGGIS::on_actionQgsStylelibMng_triggered);
+	connect(ui.actionSelfStylelibMng, &QAction::triggered, this, &CUGGIS::on_actionSelfStylelibMng_triggered);
+	connect(m_layerTreeView, &QgsLayerTreeView::doubleClicked, this, &CUGGIS::onLayerTreeItemDoubleClicked);
+	// 创建文件系统模型
+	QFileSystemModel* m_model = new QFileSystemModel(this);
+
+	// 创建 QTreeView
+	QTreeView* m_treeView = new QTreeView(this);
+	m_model->setRootPath("D:/");
+
+	// 设置文件系统模型
+	m_treeView->setModel(m_model);
+	m_treeView->setRootIndex(m_model->index(QDir::currentPath()));
+	ui.fileTree->setWidget(m_treeView);
 
 	
 }
@@ -79,7 +99,7 @@ void CUGGIS::onCurrentLayerChanged(QgsMapLayer* layer)
 
 void CUGGIS::on_actionAddVectorLayer_triggered()
 {
-	QStringList layerPathList = QFileDialog::getOpenFileNames(this, QStringLiteral("选择矢量数据"), "", "shapefile (*.shp)");
+	QStringList layerPathList = QFileDialog::getOpenFileNames(this, QStringLiteral("choose vectorlayer"), "", "shapefile (*.shp)");
 	QList<QgsMapLayer*> layerList;
 	for (const QString& layerPath : layerPathList)
 	{
@@ -98,11 +118,16 @@ void CUGGIS::on_actionAddVectorLayer_triggered()
 	}
 	if (layerList.size() < 1)
 		return;
+	
 	//选择图层
 	connect(m_layerTreeView, &QgsLayerTreeView::currentLayerChanged, this, &CUGGIS::onCurrentLayerChanged);
 
 	m_curMapLayer = layerList[0];
 	QgsProject::instance()->addMapLayers(layerList);
+	// 添加图层到图层树
+	//addLayersBelowLast(layerList);
+	// 执行动态投影
+	//setLayersCrsToLastLayerCrs();
 	m_mapCanvas->refresh();
 }
 
@@ -160,6 +185,7 @@ void CUGGIS::on_actionLayerProperties_triggered()
 	
 }
 
+
 void CUGGIS::removeLayer()
 {
 	if (!m_layerTreeView) { return; }
@@ -169,6 +195,9 @@ void CUGGIS::removeLayer()
 		m_layerTreeView->model()->removeRow(indexes.first().row());
 	}
 }
+
+
+
 
 //void CUGGIS::on_actionConvexHull_triggered()
 //{
@@ -258,6 +287,7 @@ void CUGGIS::initLayerTreeView()
 	connect(m_layerTreeView, &QgsLayerTreeView::currentLayerChanged, this, &CUGGIS::onCurrentLayerChanged);
 	connect(QgsProject::instance()->layerTreeRegistryBridge(), &QgsLayerTreeRegistryBridge::addedLayersToLayerTree, this, &CUGGIS::autoSelectAddedLayer);
 }
+
 void CUGGIS::on_actionLayerTreeControl_triggered()
 {
 	// 打开图层管理器
