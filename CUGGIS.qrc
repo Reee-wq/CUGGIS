@@ -37,5 +37,11 @@
         <file>Resources/凸包.png</file>
         <file>Resources/形状-矩形.png</file>
         <file>Resources/形状-椭圆形.png</file>
+        <file>Resources/Help.png</file>
+        <file>Resources/EXCEL.png</file>
+        <file>Resources/SelectFeatures.png</file>
+        <file>Resources/CancleSelection.png</file>
+        <file>Resources/Transparency.png</file>
+        <file>Resources/qgis_.png</file>
     </qresource>
 </RCC>

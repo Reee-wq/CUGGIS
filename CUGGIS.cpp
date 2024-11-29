@@ -1,3 +1,4 @@
+
 #include "CUGGIS.h"
 
 #include <qfiledialog.h>
@@ -36,9 +37,13 @@
 #include "QgsLayerTreeLayer.h"
 #include "QgsLayerTreeViewDefaultActions.h"
 #include "QgsLayerTreeUtils.h"
+#include "qgsmaptoolzoom.h"
 
 //#include "qgslayerpropertieswidget.h"
 #include "qfilesystemmodel.h"
+
+
+
 
 
 
@@ -50,13 +55,19 @@ CUGGIS::CUGGIS(QWidget *parent)
 	m_layerTreeView = nullptr;
 	m_layerTreeCanvasBridge = nullptr;
     ui.setupUi(this);
-    	// 初始化地图画布
+    // 初始化地图画布
 	m_mapCanvas = new QgsMapCanvas();
 	this->setCentralWidget(m_mapCanvas);
-	// 初始化图层管理器
+	// 1.2初始化图层管理器,new了两次导致白框bug
 	//m_layerTreeView = new QgsLayerTreeView(this);
 	initLayerTreeView();
 	m_curMapLayer = nullptr;
+	//1.2从文件树目录拖拽文件并打开
+	formatList << "tif" << "tiff" << "hdf" << "shp" << "qgs" << "qgz" << "jpg" << "png" << "bmp";
+
+	//1.6放大缩小工具
+	m_zoomInTool = new QgsMapToolZoom(m_mapCanvas, false);
+	m_zoomOutTool = new QgsMapToolZoom(m_mapCanvas, true);
 	//矢量，地理处理
 	//凸包
 	//m_convexHull = nullptr;
@@ -67,17 +78,29 @@ CUGGIS::CUGGIS(QWidget *parent)
 	connect(m_layerTreeView, &QgsLayerTreeView::doubleClicked, this, &CUGGIS::onLayerTreeItemDoubleClicked);
 	// 创建文件系统模型
 	QFileSystemModel* m_model = new QFileSystemModel(this);
-
 	// 创建 QTreeView
 	QTreeView* m_treeView = new QTreeView(this);
 	m_model->setRootPath("D:/");
-
 	// 设置文件系统模型
 	m_treeView->setModel(m_model);
-	m_treeView->setRootIndex(m_model->index(QDir::currentPath()));
+	m_treeView->setRootIndex(m_model->index("D:/"));
+	// 1.2设置 QTreeView 接受拖拽操作,支持从文件树目录拖入文件
+	m_treeView->setDragEnabled(true);
+	m_treeView->setAcceptDrops(true);
 	ui.fileTree->setWidget(m_treeView);
-
+	//1.2允许窗口可以拖入文件（放入主窗口构造函数中）
+	this->setAcceptDrops(true);
 	
+	// 假设您已经在您的主窗口类中设置了 ui->statusBar()
+	QLabel* coordinateLabel = new QLabel(this);
+	ui.statusBar->addWidget(coordinateLabel);
+
+	// 连接 QgsMapCanvas 的 xyCoordinates 信号到您的槽函数
+	connect(m_mapCanvas, &QgsMapCanvas::xyCoordinates, this, [this, coordinateLabel](const QgsPointXY& coordinate) {
+		QString crsAuthId = m_mapCanvas->mapSettings().destinationCrs().authid();
+		QString displayText = coordinate.toString().replace(" ", ", ").prepend("CRS: " + crsAuthId + " - ");
+		coordinateLabel->setText(displayText);
+		});
 }
 
 CUGGIS::~CUGGIS()
@@ -123,13 +146,20 @@ void CUGGIS::on_actionAddVectorLayer_triggered()
 	connect(m_layerTreeView, &QgsLayerTreeView::currentLayerChanged, this, &CUGGIS::onCurrentLayerChanged);
 
 	m_curMapLayer = layerList[0];
+	qDebug() << "current layer:" << m_curMapLayer->name();
 	QgsProject::instance()->addMapLayers(layerList);
 	// 添加图层到图层树
-	//addLayersBelowLast(layerList);
+	/*addLayersBelowLast(layerList);*/
 	// 执行动态投影
+	QgsCoordinateReferenceSystem firstCrs = m_curMapLayer->crs();
+	qDebug() << firstCrs.description();
 	//setLayersCrsToLastLayerCrs();
 	m_mapCanvas->refresh();
+	qDebug() << "current layer:" << m_curMapLayer->crs();
 }
+
+
+
 
 void CUGGIS::on_actionAddRasterLayer_triggered()
 {
@@ -241,24 +271,24 @@ void CUGGIS::initLayerTreeView()
 
 	// 添加组命令
 	QAction* actionAddGroup = new QAction(QStringLiteral("添加组"), this);
-	actionAddGroup->setIcon(QIcon(QStringLiteral(":/Resources/mActionAddGroup.png")));
-	actionAddGroup->setToolTip(QStringLiteral("添加组"));
+	actionAddGroup->setIcon(QIcon(QStringLiteral("./Resources/mActionAddGroup.png")));
+	actionAddGroup->setToolTip(QStringLiteral("Add Group"));
 	connect(actionAddGroup, &QAction::triggered, m_layerTreeView->defaultActions(), &QgsLayerTreeViewDefaultActions::addGroup);
 
 	// 扩展和收缩图层树
 	QAction* actionExpandAll = new QAction(QStringLiteral("展开所有组"), this);
-	actionExpandAll->setIcon(QIcon(QStringLiteral(":/Resources/mActionExpandTree.png")));
-	actionExpandAll->setToolTip(QStringLiteral("展开所有组"));
+	actionExpandAll->setIcon(QIcon(QStringLiteral("./Resources/mActionExpandTree.png")));
+	actionExpandAll->setToolTip(QStringLiteral("Unfold All Groups"));
 	connect(actionExpandAll, &QAction::triggered, m_layerTreeView, &QgsLayerTreeView::expandAllNodes);
 	QAction* actionCollapseAll = new QAction(QStringLiteral("折叠所有组"), this);
-	actionCollapseAll->setIcon(QIcon(QStringLiteral(":/Resources/mActionCollapseTree.png")));
-	actionCollapseAll->setToolTip(QStringLiteral("折叠所有组"));
+	actionCollapseAll->setIcon(QIcon(QStringLiteral("./Resources/mActionCollapseTree.png")));
+	actionCollapseAll->setToolTip(QStringLiteral("Fold All Groups"));
 	connect(actionCollapseAll, &QAction::triggered, m_layerTreeView, &QgsLayerTreeView::collapseAllNodes);
 
 	// 移除图层
 	QAction* actionRemoveLayer = new QAction(QStringLiteral("移除图层/组"));
-	actionRemoveLayer->setIcon(QIcon(QStringLiteral(":/Resources/mActionRemoveLayer.png")));
-	actionRemoveLayer->setToolTip(QStringLiteral("移除图层/组"));
+	actionRemoveLayer->setIcon(QIcon(QStringLiteral("./Resources/mActionRemoveLayer.png")));
+	actionRemoveLayer->setToolTip(QStringLiteral("Remove Layer/Group"));
 	connect(actionRemoveLayer, &QAction::triggered, this, &CUGGIS::removeLayer);
 
 	QToolBar* toolbar = new QToolBar();

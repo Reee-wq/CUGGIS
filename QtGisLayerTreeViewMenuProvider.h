@@ -1,4 +1,5 @@
 #pragma once
+#pragma execution_character_set("utf-8")
 #ifndef QTGISLAYERTREEVIEWMENUPROVIDER_H
 #define QTGISLAYERTREEVIEWMENUPROVIDER_H
 #include <QObject>
@@ -30,12 +31,13 @@ public:
 
 private:
     QgsMapCanvas* mMapCanvas;
-
+    QgsMapLayer* m_curMapLayer;  // 当前选中的地图图层
     QgsLayerTreeView* mView;
     LabelControl* m_dlgLabelctrl{ nullptr };
 private slots:
     void slot_labelctrlChange(int id, bool bchange, QString name);
     void slot_labelShowAction();
+    void slot_OpenAttributeAction();
 signals:
     void sig_labelctrlBtnClicked(int, bool, QString);
     

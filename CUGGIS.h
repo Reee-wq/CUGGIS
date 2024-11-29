@@ -63,6 +63,8 @@ private:
     //当前选中的图层
     QgsMapLayer* m_curMapLayer;
     void autoSelectAddedLayer(QList<QgsMapLayer*> layers);
+    //1.2文件树目录，拖拽打开文件
+    QStringList formatList;
     //1.5动态投影，鼠标悬停显示坐标
     QLabel* m_statusBarLabel;
     
@@ -81,10 +83,12 @@ private:
 public:
     // 图层管理器
     QgsLayerTreeView* m_layerTreeView;
+    
     QgsLayerTreeMapCanvasBridge* m_layerTreeCanvasBridge;
     // 1.2初始化图层管理器
     void initLayerTreeView();
     void addLayersBelowLast(const QList<QgsMapLayer*>& layerList);
+    
     //图层
     void onCurrentLayerChanged(QgsMapLayer* layer);
 
@@ -97,7 +101,6 @@ public:
     void on_actionSelfStylelibMng_triggered();//打开自定义符号管理器
     void onLayerTreeItemDoubleClicked();  //双击图层修改符号
     SymbolManager* mSymbolManager = nullptr;  //符号管理器窗口
-
     //4矢量，地理处理
     QgsMapToolSelect* m_pSelectTool;
     CircleCut* m_pCircleCut;
@@ -117,6 +120,8 @@ public slots:
     //1.1图层，图层树目录和添加矢量文件
     void on_actionLayerTreeControl_triggered();
     void on_actionAddVectorLayer_triggered();
+    //1.1帮助网址打开
+    void on_actionHelp_triggered();
     //1.1图层，添加栅格文件
     void on_actionAddRasterLayer_triggered();
     //1.3图层，图层属性
@@ -130,8 +135,20 @@ public slots:
     void on_actionPan_triggered();
      //1.6箭头
     void on_actionExitPan_triggered();
- // 移除图层
- void removeLayer();
+    // 移除图层
+    void removeLayer();
+    //3.4查看属性表 DILNUR
+    void on_actionOpenAttrTable_triggered();
+    //3.4查看字段   DILNUR
+    void on_actionOpenFields_triggered();
+    // 3.4打开属性表并可编辑
+    void openEditableAttributeTable();
+    // 3.4触发选中工具
+    void on_actionChoose_triggered();
+    //3.4触发取消选中工具
+    void on_actionFinish_triggered();
+    //3.5Excel转矢量  DILNUR
+    void on_actionExcelShp_triggered();
 
  //4矢量，地理处理
  void on_actionRasterCalculator_triggered();//栅格计算器
@@ -146,7 +163,12 @@ public slots:
  //数据处理，ID3
  void on_actionID3_triggered();
 
-//protected:
-//    void resizeEvent(QResizeEvent* event);
+ protected:
+     //1.2从文件树目录拖拽，打开文件
+     void dragEnterEvent(QDragEnterEvent* event);
+     void dropEvent(QDropEvent* event);
+     void projectOpen(const QString& filepath);
+     void addLayer(const QString& filepath);
+
 
 };

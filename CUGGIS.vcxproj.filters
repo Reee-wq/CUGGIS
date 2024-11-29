@@ -47,14 +47,17 @@
     <Filter Include="4SpatialAnalysis">
       <UniqueIdentifier>{5dc99abf-6494-42a5-864b-db6a87410313}</UniqueIdentifier>
     </Filter>
+    <Filter Include="3QgsTool\3.4&amp;3.5">
+      <UniqueIdentifier>{d44cf753-14f8-435a-ba23-528c14d6f6df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="1MainApp\1.2文件树目录，图层树目录在CUGGIS.cpp">
+      <UniqueIdentifier>{09f664fb-1f09-47dd-a2fc-3cee38c73e46}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="CUGGIS.qrc">
       <Filter>Resource Files</Filter>
     </QtRcc>
-    <QtUic Include="CUGGIS.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
     <ClCompile Include="CUGGIS.cpp">
       <Filter>1MainApp</Filter>
     </ClCompile>
@@ -132,6 +135,18 @@
     <ClCompile Include="SHPtoGRID.cpp">
       <Filter>4SpatialAnalysis</Filter>
     </ClCompile>
+    <ClCompile Include="readExcel.cpp">
+      <Filter>3QgsTool\3.4&amp;3.5</Filter>
+    </ClCompile>
+    <ClCompile Include="Select.cpp">
+      <Filter>3QgsTool\3.4&amp;3.5</Filter>
+    </ClCompile>
+    <ClCompile Include="actionOfDi.cpp">
+      <Filter>3QgsTool\3.4&amp;3.5</Filter>
+    </ClCompile>
+    <ClCompile Include="DragShow.cpp">
+      <Filter>1MainApp\1.2文件树目录，图层树目录在CUGGIS.cpp</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />
@@ -177,6 +192,12 @@
     </QtUic>
     <QtUic Include="SHPtoGRID.ui">
       <Filter>4SpatialAnalysis</Filter>
+    </QtUic>
+    <QtUic Include="readExcel.ui">
+      <Filter>3QgsTool\3.4&amp;3.5</Filter>
+    </QtUic>
+    <QtUic Include="CUGGIS.ui">
+      <Filter>1MainApp</Filter>
     </QtUic>
   </ItemGroup>
   <ItemGroup>
@@ -230,6 +251,12 @@
     </QtMoc>
     <QtMoc Include="SHPtoGRID.h">
       <Filter>4SpatialAnalysis</Filter>
+    </QtMoc>
+    <QtMoc Include="readExcel.h">
+      <Filter>3QgsTool\3.4&amp;3.5</Filter>
+    </QtMoc>
+    <QtMoc Include="Select.h">
+      <Filter>3QgsTool\3.4&amp;3.5</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

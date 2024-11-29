@@ -1,6 +1,7 @@
 #include "CUGGIS.h"	
 #include <qfiledialog.h>
 #include <QMessageBox>
+#include <QDesktopServices>
 #include "qgsproject.h"
 
 void CUGGIS::on_actionNewProject_triggered() 
@@ -59,4 +60,8 @@ void CUGGIS::saveProject(const QString& filePath)
 void CUGGIS::on_actionExit_triggered()
 {
     	close();
+}
+void CUGGIS::on_actionHelp_triggered()
+{
+	QDesktopServices::openUrl(QUrl(QLatin1String("https://docs.qgis.org/3.16/zh_Hans/docs/index.html")));
 }

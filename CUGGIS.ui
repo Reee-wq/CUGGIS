@@ -40,6 +40,8 @@
     <property name="title">
      <string>编辑</string>
     </property>
+    <addaction name="actionChoose"/>
+    <addaction name="actionFinish"/>
    </widget>
    <widget class="QMenu" name="menu_3">
     <property name="title">
@@ -68,6 +70,8 @@
     <addaction name="separator"/>
     <addaction name="actionLayerProperties"/>
     <addaction name="menumenuSymbol"/>
+    <addaction name="actionOpenFields"/>
+    <addaction name="actionOpenAttrTable"/>
    </widget>
    <widget class="QMenu" name="menuVector">
     <property name="title">
@@ -89,8 +93,15 @@
      <addaction name="actionConvexHull"/>
      <addaction name="menusa"/>
     </widget>
+    <widget class="QMenu" name="menusa_2">
+     <property name="title">
+      <string>地理转换工具</string>
+     </property>
+     <addaction name="actionExcelShp"/>
+     <addaction name="actionSHPtoGRID"/>
+    </widget>
     <addaction name="menuGeoProcess"/>
-    <addaction name="actionSHPtoGRID"/>
+    <addaction name="menusa_2"/>
    </widget>
    <widget class="QMenu" name="menu_6">
     <property name="title">
@@ -120,7 +131,14 @@
     <bool>false</bool>
    </attribute>
   </widget>
-  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QStatusBar" name="statusBar">
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="toolTip">
+    <string>当前地图的坐标</string>
+   </property>
+  </widget>
   <widget class="QDockWidget" name="fileTree">
    <property name="windowTitle">
     <string>浏览器</string>
@@ -157,12 +175,24 @@
    <addaction name="actionZoomOut"/>
    <addaction name="actionPan"/>
    <addaction name="actionExitPan"/>
+   <addaction name="separator"/>
    <addaction name="actionAddVectorLayer"/>
    <addaction name="actionAddRasterLayer"/>
+   <addaction name="separator"/>
    <addaction name="actionBuffer"/>
    <addaction name="actionRectangle"/>
    <addaction name="actionCircle"/>
    <addaction name="actionRandom"/>
+   <addaction name="actionSHPtoGRID"/>
+   <addaction name="separator"/>
+   <addaction name="actionExcelShp"/>
+   <addaction name="actionChoose"/>
+   <addaction name="actionLayerProperties"/>
+   <addaction name="actionOpenAttrTable"/>
+   <addaction name="actionOpenFields"/>
+   <addaction name="separator"/>
+   <addaction name="actionHelp"/>
+   <addaction name="separator"/>
   </widget>
   <action name="actionNewProject">
    <property name="icon">
@@ -266,6 +296,10 @@
    </property>
   </action>
   <action name="actionLayerProperties">
+   <property name="icon">
+    <iconset resource="CUGGIS.qrc">
+     <normaloff>:/CUGGIS/Resources/Transparency.png</normaloff>:/CUGGIS/Resources/Transparency.png</iconset>
+   </property>
    <property name="text">
     <string>图层属性</string>
    </property>
@@ -326,6 +360,10 @@
    </property>
   </action>
   <action name="actionSHPtoGRID">
+   <property name="icon">
+    <iconset resource="CUGGIS.qrc">
+     <normaloff>:/CUGGIS/Resources/qgis_.png</normaloff>:/CUGGIS/Resources/qgis_.png</iconset>
+   </property>
    <property name="text">
     <string>矢量转栅格</string>
    </property>
@@ -360,6 +398,66 @@
   <action name="actionRasterCalculator">
    <property name="text">
     <string>栅格计算器</string>
+   </property>
+  </action>
+  <action name="actionOpenAttrTable">
+   <property name="icon">
+    <iconset resource="CUGGIS.qrc">
+     <normaloff>:/CUGGIS/Resources/mActionAttributes.png</normaloff>:/CUGGIS/Resources/mActionAttributes.png</iconset>
+   </property>
+   <property name="text">
+    <string>打开属性表</string>
+   </property>
+  </action>
+  <action name="actionExcelShp">
+   <property name="icon">
+    <iconset resource="CUGGIS.qrc">
+     <normaloff>:/CUGGIS/Resources/EXCEL.png</normaloff>:/CUGGIS/Resources/EXCEL.png</iconset>
+   </property>
+   <property name="text">
+    <string>Excel转矢量</string>
+   </property>
+  </action>
+  <action name="actionOpenFields">
+   <property name="icon">
+    <iconset resource="CUGGIS.qrc">
+     <normaloff>:/CUGGIS/Resources/mSourceFields.png</normaloff>:/CUGGIS/Resources/mSourceFields.png</iconset>
+   </property>
+   <property name="text">
+    <string>打开字段</string>
+   </property>
+   <property name="toolTip">
+    <string>打开字段</string>
+   </property>
+  </action>
+  <action name="actionChoose">
+   <property name="icon">
+    <iconset resource="CUGGIS.qrc">
+     <normaloff>:/CUGGIS/Resources/SelectFeatures.png</normaloff>:/CUGGIS/Resources/SelectFeatures.png</iconset>
+   </property>
+   <property name="text">
+    <string>选中要素</string>
+   </property>
+  </action>
+  <action name="actionFinish">
+   <property name="icon">
+    <iconset resource="CUGGIS.qrc">
+     <normaloff>:/CUGGIS/Resources/CancleSelection.png</normaloff>:/CUGGIS/Resources/CancleSelection.png</iconset>
+   </property>
+   <property name="text">
+    <string>取消选中</string>
+   </property>
+  </action>
+  <action name="actionHelp">
+   <property name="icon">
+    <iconset resource="CUGGIS.qrc">
+     <normaloff>:/CUGGIS/Resources/Help.png</normaloff>:/CUGGIS/Resources/Help.png</iconset>
+   </property>
+   <property name="text">
+    <string>帮助</string>
+   </property>
+   <property name="toolTip">
+    <string>帮助文档</string>
    </property>
   </action>
  </widget>
