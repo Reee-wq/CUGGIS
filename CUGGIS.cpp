@@ -100,7 +100,6 @@ CUGGIS::CUGGIS(QWidget *parent)
 	addLayer("RasterAnalyze", action5, { ui.actionRasterCalculator });
 	// 在构造函数中连接 doubleClicked 信号
 	connect(treeView, &QTreeView::doubleClicked, this, &CUGGIS::onTreeViewDoubleClick);
-
 	connect(ui.actionFileBrowser, &QAction::triggered, ui.fileTree, &QDockWidget::show);
 	connect(ui.actionLayer, &QAction::triggered, ui.LayerTreeControl, &QDockWidget::show);
 	connect(ui.actionToolBoxs, &QAction::triggered, dockWidget, &QDockWidget::show);
@@ -110,7 +109,7 @@ CUGGIS::CUGGIS(QWidget *parent)
 	m_zoomOutTool = new QgsMapToolZoom(m_mapCanvas, true);
 	//矢量，地理处理
 	//凸包
-	//m_convexHull = nullptr;
+	m_convexHull = nullptr;
 	//数据处理，ID3andC4
 	m_ID3andC4 = nullptr;
 	connect(ui.actionQgsStylelibMng, &QAction::triggered, this, &CUGGIS::on_actionQgsStylelibMng_triggered);

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>579</width>
-    <height>400</height>
+    <width>752</width>
+    <height>628</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,8 +16,8 @@
   <widget class="QPushButton" name="Start">
    <property name="geometry">
     <rect>
-     <x>230</x>
-     <y>240</y>
+     <x>310</x>
+     <y>330</y>
      <width>56</width>
      <height>17</height>
     </rect>
@@ -29,8 +29,8 @@
   <widget class="QPushButton" name="Load">
    <property name="geometry">
     <rect>
-     <x>230</x>
-     <y>270</y>
+     <x>310</x>
+     <y>360</y>
      <width>56</width>
      <height>17</height>
     </rect>
@@ -42,8 +42,8 @@
   <widget class="QPushButton" name="Export">
    <property name="geometry">
     <rect>
-     <x>230</x>
-     <y>310</y>
+     <x>310</x>
+     <y>390</y>
      <width>56</width>
      <height>17</height>
     </rect>
@@ -55,8 +55,8 @@
   <widget class="QPushButton" name="Clear">
    <property name="geometry">
     <rect>
-     <x>230</x>
-     <y>350</y>
+     <x>310</x>
+     <y>420</y>
      <width>56</width>
      <height>17</height>
     </rect>
@@ -65,13 +65,49 @@
     <string>Clear</string>
    </property>
   </widget>
-  <widget class="QWidget" name="widget" native="true">
+  <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>130</x>
-     <y>40</y>
-     <width>281</width>
-     <height>181</height>
+     <x>214</x>
+     <y>450</y>
+     <width>71</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>极点数：</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEditPoiCount">
+   <property name="geometry">
+    <rect>
+     <x>310</x>
+     <y>450</y>
+     <width>310</width>
+     <height>19</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>214</x>
+     <y>500</y>
+     <width>61</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>极点坐标：</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEditPoiCoords">
+   <property name="geometry">
+    <rect>
+     <x>310</x>
+     <y>500</y>
+     <width>359</width>
+     <height>111</height>
     </rect>
    </property>
   </widget>
