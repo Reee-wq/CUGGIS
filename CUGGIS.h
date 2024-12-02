@@ -3,7 +3,7 @@
 
 #include <QtWidgets/QMainWindow>
 #include "ui_CUGGIS.h"
-//#include "ConvexHull.h"
+#include "ConvexHull.h"
 #include "ID3andC4.h"
 
 #include "qgsmaplayer.h"
@@ -39,6 +39,14 @@
 #include <QgsRasterRenderer.h>
 #include <QgsPalettedRasterRenderer.h>
 #include <QgsRendererRange.h>
+
+//3.1-3.3用到的，地图编辑
+#include"AddPoint.h"
+#include"deleteTool.h"
+#include"moveTool.h"
+#include"copyTool.h"
+#include"bufferTool.h"
+#include "parallelTool.h"
 //4用到的
 #include "qgscoordinatereferencesystem.h"
 #include "Buffer.h"
@@ -58,13 +66,17 @@ public:
 
 private:
     Ui::CUGGISClass ui;
-    // 地图画布
-    QgsMapCanvas* m_mapCanvas = nullptr;
-    //当前选中的图层
-    QgsMapLayer* m_curMapLayer;
+   
+ 
     void autoSelectAddedLayer(QList<QgsMapLayer*> layers);
     //1.2文件树目录，拖拽打开文件
     QStringList formatList;
+    //1.2工具箱树目录
+    QTreeView* treeView = nullptr;
+    QStandardItemModel* treeModel = nullptr;
+    void addLayer(const QString& layerName, QAction* action, const QList<QAction*>& subActions);
+    void mouseDoubleClickEvent(QMouseEvent* event) override;
+    void onTreeViewDoubleClick(const QModelIndex& index);
     //1.5动态投影，鼠标悬停显示坐标
     QLabel* m_statusBarLabel;
     
@@ -76,14 +88,17 @@ private:
     Buffer BufferWindow;// 初始化缓冲区窗口
     SHPtoGRID SHPtoGRIDWindow;// 初始化矢量转栅格窗口
     //4矢量，地理处理，凸包
-   // ConvexHull* m_convexHull;
+    ConvexHull* m_convexHull;
     //数据处理，ID3
     ID3andC4* m_ID3andC4;
 
 public:
     // 图层管理器
     QgsLayerTreeView* m_layerTreeView;
-    
+    // 地图画布
+    QgsMapCanvas* m_mapCanvas = nullptr;
+    //当前选中的图层
+    QgsMapLayer* m_curMapLayer;
     QgsLayerTreeMapCanvasBridge* m_layerTreeCanvasBridge;
     // 1.2初始化图层管理器
     void initLayerTreeView();
@@ -94,13 +109,14 @@ public:
 
    //1.5动态投影
     void setLayersCrsToLastLayerCrs();
-   /* void showCoordinates(const QgsPointXY& coordinate);*/
     //2地图符号与色表
     void on_actionQgsStylelibMng_triggered();  //打开QGIS符号库
     void on_styleManagerDialogFinished(int result);  //样式管理器关闭
     void on_actionSelfStylelibMng_triggered();//打开自定义符号管理器
     void onLayerTreeItemDoubleClicked();  //双击图层修改符号
     SymbolManager* mSymbolManager = nullptr;  //符号管理器窗口
+    //3.4Redo/Undo
+    AddPoint* m_AddPoint; // 确保指针类型正确
     //4矢量，地理处理
     QgsMapToolSelect* m_pSelectTool;
     CircleCut* m_pCircleCut;
@@ -137,6 +153,14 @@ public slots:
     void on_actionExitPan_triggered();
     // 移除图层
     void removeLayer();
+    //3-1-3.3地图编辑
+    void on_actionAddPoint_triggered();
+    void on_actionDelete_triggered();
+    void on_actionMove_triggered();
+    void on_actionCopy_triggered();
+    void on_actionBuffer_2_triggered();
+    void on_actionParallel_triggered();
+
     //3.4查看属性表 DILNUR
     void on_actionOpenAttrTable_triggered();
     //3.4查看字段   DILNUR
@@ -147,6 +171,9 @@ public slots:
     void on_actionChoose_triggered();
     //3.4触发取消选中工具
     void on_actionFinish_triggered();
+    //3.4Undo/Redo
+    void on_actionUndo_triggered();
+    void on_actionRedo_triggered();
     //3.5Excel转矢量  DILNUR
     void on_actionExcelShp_triggered();
 
@@ -157,8 +184,8 @@ public slots:
  void on_actionRectangle_triggered();//矩形拉框
  void on_actionCircle_triggered();//圆形拉框
  void on_actionRandom_triggered();//任意多边形拉框
- //凸包
- //void on_actionConvexHull_triggered();
+ //4矢量，地理处理，凸包
+ void on_actionConvexHull_triggered();
 
  //数据处理，ID3
  void on_actionID3_triggered();
@@ -169,6 +196,14 @@ public slots:
      void dropEvent(QDropEvent* event);
      void projectOpen(const QString& filepath);
      void addLayer(const QString& filepath);
+
+ private slots:
+     void onAction1Triggered();
+     void onAction2Triggered();
+     void onAction3Triggered();
+     void onAction4Triggered();
+     void onAction5Triggered();
+       
 
 
 };

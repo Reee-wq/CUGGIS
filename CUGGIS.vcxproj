@@ -120,13 +120,18 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="actionOfDi.cpp" />
+    <ClCompile Include="ActionOfMa.cpp" />
+    <ClCompile Include="AddPoint.cpp" />
     <ClCompile Include="Buffer.cpp" />
+    <ClCompile Include="bufferTool.cpp" />
     <ClCompile Include="CircleCut.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="ConvexHull.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="copyTool.cpp" />
+    <ClCompile Include="deleteTool.cpp" />
     <ClCompile Include="DragShow.cpp" />
     <ClCompile Include="DynamicProj.cpp" />
     <ClCompile Include="ID3andC4.cpp" />
@@ -134,7 +139,9 @@
     <ClCompile Include="Layering.cpp" />
     <ClCompile Include="LayerPropertiesWidget.cpp" />
     <ClCompile Include="Maptool.cpp" />
+    <ClCompile Include="moveTool.cpp" />
     <ClCompile Include="MyDefaultMapTool.cpp" />
+    <ClCompile Include="parallelTool.cpp" />
     <ClCompile Include="PolygonCut.cpp" />
     <ClCompile Include="project.cpp" />
     <ClCompile Include="qgsmaptoolselect.cpp" />
@@ -149,11 +156,12 @@
     <ClCompile Include="SymbolExport.cpp" />
     <ClCompile Include="SymbolManager.cpp" />
     <ClCompile Include="SymbolModify.cpp" />
+    <ClCompile Include="ToolBox.cpp" />
     <ClCompile Include="VectorLayerPropertiesWidget.cpp" />
     <QtRcc Include="CUGGIS.qrc" />
     <QtUic Include="Buffer.ui" />
     <QtUic Include="ConvexHull.ui">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </QtUic>
     <QtUic Include="CUGGIS.ui" />
     <QtMoc Include="CUGGIS.h" />
@@ -181,6 +189,12 @@
     <QtMoc Include="SHPtoGRID.h" />
     <QtMoc Include="readExcel.h" />
     <QtMoc Include="Select.h" />
+    <QtMoc Include="AddPoint.h" />
+    <QtMoc Include="bufferTool.h" />
+    <QtMoc Include="copyTool.h" />
+    <QtMoc Include="deleteTool.h" />
+    <QtMoc Include="moveTool.h" />
+    <QtMoc Include="parallelTool.h" />
     <ClInclude Include="StyleManager.h" />
     <QtMoc Include="SymbolModify.h" />
     <QtMoc Include="SymbolManager.h" />
@@ -194,7 +208,7 @@
     <ClInclude Include="MyDefaultMapTool.h" />
     <ClInclude Include="require.h" />
     <QtMoc Include="ConvexHull.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </QtMoc>
     <ClInclude Include="decisionstructure.h" />
     <QtMoc Include="QtGisLayerTreeViewMenuProvider.h" />

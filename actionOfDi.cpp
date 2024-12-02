@@ -158,3 +158,21 @@ void CUGGIS::on_actionExcelShp_triggered()
     r->show();
     m_mapCanvas->refresh();
 }
+void  CUGGIS::on_actionUndo_triggered()
+{
+    if (m_AddPoint) {
+        m_AddPoint->undo();
+    }
+    else {
+        QMessageBox::warning(this, "Error", "PolygonEditTool is not active.");
+    }
+}
+void  CUGGIS::on_actionRedo_triggered()
+{
+    if (m_AddPoint) {
+        m_AddPoint->redo();
+    }
+    else {
+        QMessageBox::warning(this, "Error", "PolygonEditTool is not active.");
+    }
+}

@@ -97,14 +97,18 @@ void QtGisLayerTreeViewMenuProvider::slot_labelShowAction()
 			st.name = "";
 		}
 
-		QStringList items = veclayer->fields().names();
-		if (m_dlgLabelctrl == nullptr)
+		QStringList items = veclayer->fields().names();//获取矢量图层的字段名称：
+		if (m_dlgLabelctrl == nullptr)//创建标签控制对话框
 		{
+			//如果标签控制对话框（m_dlgLabelctrl）尚未创建，则创建一个新的对话框，
+			//并连接信号和槽，以便在对话框中的按钮点击时触发相应的槽函数
 			m_dlgLabelctrl = new LabelControl();
 			connect(m_dlgLabelctrl, SIGNAL(sig_labelctrlBtnClicked(int, bool, QString)), this, SLOT(slot_labelctrlChange(int, bool, QString)));
 		}
+		//设置标签控制对话框的初始信息
 		m_dlgLabelctrl->SetItems(items);
 		m_dlgLabelctrl->SetInitInfo(st.bshow, st.name);
+		//显示并激活标签控制对话框
 		m_dlgLabelctrl->show();
 		m_dlgLabelctrl->raise();
 		m_dlgLabelctrl->activateWindow();
@@ -200,6 +204,7 @@ void QtGisLayerTreeViewMenuProvider::slot_OpenAttributeAction()
 void QtGisLayerTreeViewMenuProvider::slot_labelctrlChange(int id, bool bchange, QString name) {
 	if (m_dlgLabelctrl)
 	{
+		//如果不为空，则隐藏该控件并删除它，然后将m_dlgLabelctrl设置为0（即空指针）。
 		m_dlgLabelctrl->hide();
 		delete m_dlgLabelctrl;
 		m_dlgLabelctrl = 0;
@@ -207,6 +212,7 @@ void QtGisLayerTreeViewMenuProvider::slot_labelctrlChange(int id, bool bchange, 
 
 	if (id == 1)
 	{
+		//检查传入的id是否为1。如果是，则获取当前视图中的当前图层
 		QgsMapLayer* ll = mView->currentLayer();
 		if (ll && ll->type() == QgsMapLayerType::VectorLayer)
 		{

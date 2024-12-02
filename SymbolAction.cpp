@@ -55,18 +55,13 @@ void  CUGGIS::onLayerTreeItemDoubleClicked() {
 		mSymbolModify->show();
 	}
 	else {
+
+		
 		QgsRasterLayer* rasterLayer = qobject_cast<QgsRasterLayer*>(m_curMapLayer);
-		if (rasterLayer) {
-			//int res = QMessageBox::warning(this, QStringLiteral("分层设色"), QStringLiteral("是否对图层进行分层设色？"), QMessageBox::StandardButton::Yes, QMessageBox::StandardButton::No);
-			//if (res == QMessageBox::StandardButton::Yes)
-			//{
-				Layering* layering = new Layering(this, m_curMapLayer);
-				layering->show();
-			//}
-			//else {
-			//	QMessageBox::warning(this, QStringLiteral("分层设色"), QStringLiteral("请选择矢量图层！"));
-			//}
-		}
+
+		Layering* layering = new Layering(this, m_curMapLayer);
+		layering->show();
+
 	}
 
 }

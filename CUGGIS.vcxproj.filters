@@ -53,6 +53,15 @@
     <Filter Include="1MainApp\1.2文件树目录，图层树目录在CUGGIS.cpp">
       <UniqueIdentifier>{09f664fb-1f09-47dd-a2fc-3cee38c73e46}</UniqueIdentifier>
     </Filter>
+    <Filter Include="3QgsTool\3.1-3.3点线面编辑">
+      <UniqueIdentifier>{61298360-5a5e-4321-853d-ae86fb12ac3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="1MainApp\1.2工具箱树目录的action">
+      <UniqueIdentifier>{42a5a1a4-5eca-46bc-b1d2-35970d37fe85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="4SpatialAnalysis\凸包">
+      <UniqueIdentifier>{3ac02c6b-6262-4b1f-82db-fbbf3be1fa93}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="CUGGIS.qrc">
@@ -65,9 +74,6 @@
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>1MainApp</Filter>
-    </ClCompile>
-    <ClCompile Include="ConvexHull.cpp">
-      <Filter>4SpatialAnalysis</Filter>
     </ClCompile>
     <ClCompile Include="ID3andC4.cpp">
       <Filter>DecisionStructure</Filter>
@@ -147,6 +153,33 @@
     <ClCompile Include="DragShow.cpp">
       <Filter>1MainApp\1.2文件树目录，图层树目录在CUGGIS.cpp</Filter>
     </ClCompile>
+    <ClCompile Include="AddPoint.cpp">
+      <Filter>3QgsTool\3.1-3.3点线面编辑</Filter>
+    </ClCompile>
+    <ClCompile Include="bufferTool.cpp">
+      <Filter>3QgsTool\3.1-3.3点线面编辑</Filter>
+    </ClCompile>
+    <ClCompile Include="copyTool.cpp">
+      <Filter>3QgsTool\3.1-3.3点线面编辑</Filter>
+    </ClCompile>
+    <ClCompile Include="deleteTool.cpp">
+      <Filter>3QgsTool\3.1-3.3点线面编辑</Filter>
+    </ClCompile>
+    <ClCompile Include="moveTool.cpp">
+      <Filter>3QgsTool\3.1-3.3点线面编辑</Filter>
+    </ClCompile>
+    <ClCompile Include="parallelTool.cpp">
+      <Filter>3QgsTool\3.1-3.3点线面编辑</Filter>
+    </ClCompile>
+    <ClCompile Include="ActionOfMa.cpp">
+      <Filter>3QgsTool\3.1-3.3点线面编辑</Filter>
+    </ClCompile>
+    <ClCompile Include="ToolBox.cpp">
+      <Filter>1MainApp\1.2工具箱树目录的action</Filter>
+    </ClCompile>
+    <ClCompile Include="ConvexHull.cpp">
+      <Filter>4SpatialAnalysis\凸包</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />
@@ -166,9 +199,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <QtUic Include="ConvexHull.ui">
-      <Filter>4SpatialAnalysis</Filter>
-    </QtUic>
     <QtUic Include="ID3andC4.ui">
       <Filter>DecisionStructure</Filter>
     </QtUic>
@@ -199,11 +229,11 @@
     <QtUic Include="CUGGIS.ui">
       <Filter>1MainApp</Filter>
     </QtUic>
+    <QtUic Include="ConvexHull.ui">
+      <Filter>4SpatialAnalysis\凸包</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="ConvexHull.h">
-      <Filter>4SpatialAnalysis</Filter>
-    </QtMoc>
     <QtMoc Include="ID3andC4.h">
       <Filter>DecisionStructure</Filter>
     </QtMoc>
@@ -257,6 +287,27 @@
     </QtMoc>
     <QtMoc Include="Select.h">
       <Filter>3QgsTool\3.4&amp;3.5</Filter>
+    </QtMoc>
+    <QtMoc Include="AddPoint.h">
+      <Filter>3QgsTool\3.1-3.3点线面编辑</Filter>
+    </QtMoc>
+    <QtMoc Include="bufferTool.h">
+      <Filter>3QgsTool\3.1-3.3点线面编辑</Filter>
+    </QtMoc>
+    <QtMoc Include="copyTool.h">
+      <Filter>3QgsTool\3.1-3.3点线面编辑</Filter>
+    </QtMoc>
+    <QtMoc Include="deleteTool.h">
+      <Filter>3QgsTool\3.1-3.3点线面编辑</Filter>
+    </QtMoc>
+    <QtMoc Include="moveTool.h">
+      <Filter>3QgsTool\3.1-3.3点线面编辑</Filter>
+    </QtMoc>
+    <QtMoc Include="parallelTool.h">
+      <Filter>3QgsTool\3.1-3.3点线面编辑</Filter>
+    </QtMoc>
+    <QtMoc Include="ConvexHull.h">
+      <Filter>4SpatialAnalysis\凸包</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

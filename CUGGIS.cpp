@@ -17,6 +17,7 @@
 #include <QGridLayout>
 #include <QListWidget>
 #include <QGroupBox>
+#include <QIcon>
 #include "QtGisLayerTreeViewMenuProvider.h"
 
 #include "VectorLayerPropertiesWidget.h"
@@ -28,7 +29,7 @@
 #include "qgstaskmanagerwidget.h"
 #include "qgsdoublespinbox.h"
 #include "qgsdockwidget.h"
-
+#include "qstringliteral.h"
 #include "QgsLayerTreeView.h"
 #include "QgsLayerTreeModel.h"
 #include "QgsLayerTreeMapCanvasBridge.h"
@@ -48,7 +49,7 @@
 
 
 CUGGIS::CUGGIS(QWidget *parent)
-    : QMainWindow(parent)
+    : QMainWindow(parent), treeView(new QTreeView(this)), treeModel(new QStandardItemModel(this))
 {
 	m_mapCanvas = nullptr;
 	// 图层管理器
@@ -64,6 +65,45 @@ CUGGIS::CUGGIS(QWidget *parent)
 	m_curMapLayer = nullptr;
 	//1.2从文件树目录拖拽文件并打开
 	formatList << "tif" << "tiff" << "hdf" << "shp" << "qgs" << "qgz" << "jpg" << "png" << "bmp";
+	//1.2工具箱树目录
+	  // 设置树视图和模型
+	treeView->setModel(treeModel);
+	treeView->setRootIsDecorated(true);
+	// 禁用编辑模式
+	treeView->setEditTriggers(QAbstractItemView::NoEditTriggers);
+	treeView->setSelectionMode(QAbstractItemView::SingleSelection); // 允许单选
+	treeView->setFocusPolicy(Qt::StrongFocus); // 确保获得焦点
+
+	// 1.2工具箱创建侧边栏
+	QDockWidget* dockWidget = new QDockWidget("Tool Box", this);
+	dockWidget->setWidget(treeView);
+	addDockWidget(Qt::RightDockWidgetArea, dockWidget);
+
+	// 1.2工具箱创建QAction
+	QAction* action1 = new QAction( "GeoTransformTool", this);
+	connect(action1, &QAction::triggered, this, &CUGGIS::onAction1Triggered);
+	QAction* action2 = new QAction("GeoProcessTool", this);
+	connect(action2, &QAction::triggered, this, &CUGGIS::onAction2Triggered);
+	QAction* action3 = new QAction("MapEdit", this);
+	connect(action3, &QAction::triggered, this, &CUGGIS::onAction2Triggered);
+	QAction* action4 = new QAction("LayerTool", this);
+	connect(action4, &QAction::triggered, this, &CUGGIS::onAction2Triggered);
+	QAction* action5 = new QAction("RasterAnalyze", this);
+	connect(action5, &QAction::triggered, this, &CUGGIS::onAction2Triggered);
+
+
+	// 1.2工具箱向模型中添加父图层并添加子图层
+	addLayer("GeoTransformTool", action1, { ui.actionExcelShp,ui.actionSHPtoGRID });
+	addLayer("GeoProcessTool", action2, {ui.actionBuffer,ui.actionConvexHull,ui.actionRectangle,ui.actionCircle,ui.actionRandom });
+	addLayer("MapEdit", action3, { ui.actionAddPoint ,ui.actionDelete, ui.actionMove,ui.actionCopy,ui.actionBuffer_2,ui.actionParallel });
+	addLayer("LayerTool", action4, { ui.actionAddVectorLayer,ui.actionAddRasterLayer,ui.actionLayerProperties,ui.actionQgsStylelibMng,ui.actionSelfStylelibMng });
+	addLayer("RasterAnalyze", action5, { ui.actionRasterCalculator });
+	// 在构造函数中连接 doubleClicked 信号
+	connect(treeView, &QTreeView::doubleClicked, this, &CUGGIS::onTreeViewDoubleClick);
+
+	connect(ui.actionFileBrowser, &QAction::triggered, ui.fileTree, &QDockWidget::show);
+	connect(ui.actionLayer, &QAction::triggered, ui.LayerTreeControl, &QDockWidget::show);
+	connect(ui.actionToolBoxs, &QAction::triggered, dockWidget, &QDockWidget::show);
 
 	//1.6放大缩小工具
 	m_zoomInTool = new QgsMapToolZoom(m_mapCanvas, false);
@@ -106,7 +146,7 @@ CUGGIS::CUGGIS(QWidget *parent)
 CUGGIS::~CUGGIS()
 {}
 
-void CUGGIS::onCurrentLayerChanged(QgsMapLayer* layer)
+void CUGGIS::onCurrentLayerChanged(QgsMapLayer* layer)//检查给定的图层是否为特定类型的矢量图层（例如Shapefile），并将其路径存储在成员变量m_curMapLayer中。
 {
 	QgsVectorLayer* vectorLayer = qobject_cast<QgsVectorLayer*>(layer);
 	if (vectorLayer)
@@ -229,13 +269,13 @@ void CUGGIS::removeLayer()
 
 
 
-//void CUGGIS::on_actionConvexHull_triggered()
-//{
-//	m_convexHull=new ConvexHull();
-//	m_convexHull->show();
-//}
+void CUGGIS::on_actionConvexHull_triggered()
+{
+	m_convexHull=new ConvexHull();
+	m_convexHull->show();
+}
 
-void CUGGIS::autoSelectAddedLayer(QList<QgsMapLayer*> layers)
+void CUGGIS::autoSelectAddedLayer(QList<QgsMapLayer*> layers)//找到列表中的第一个图层，并将其设置为当前活动的图层
 {
 	if (!layers.isEmpty()) {
 		

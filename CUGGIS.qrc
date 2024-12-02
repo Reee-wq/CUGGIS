@@ -43,5 +43,16 @@
         <file>Resources/CancleSelection.png</file>
         <file>Resources/Transparency.png</file>
         <file>Resources/qgis_.png</file>
+        <file>Resources/添加点位.png</file>
+        <file>Resources/复制.png</file>
+        <file>Resources/平行度.png</file>
+        <file>Resources/删除.png</file>
+        <file>Resources/线缓冲区.png</file>
+        <file>Resources/移动.png</file>
+        <file>Resources/撤销.png</file>
+        <file>Resources/浏览.png</file>
+        <file>Resources/图层.png</file>
+        <file>Resources/重做.png</file>
+        <file>Resources/ToolBox.png</file>
     </qresource>
 </RCC>

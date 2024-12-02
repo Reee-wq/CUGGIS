@@ -47,9 +47,9 @@ void QgsMapToolSelect::canvasPressEvent(QgsMapMouseEvent* e)
 void QgsMapToolSelect::canvasMoveEvent(QgsMapMouseEvent* e)
 {
 	if (mCanvas == nullptr || pLayer == nullptr || !selecting_) return;
-	endPoint_ = e->mapPoint(); //Update the end point for rectangle
+	endPoint_ = e->mapPoint(); //存储选择框的结束点
 
-	//Update rubberband to show rectangle
+	//更新橡皮筋
 	rubberBand_->reset();
 	rubberBand_->addPoint(startPoint_);
 	rubberBand_->addPoint(QgsPointXY(endPoint_.x(), startPoint_.y()));
