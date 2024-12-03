@@ -140,10 +140,14 @@ CUGGIS::CUGGIS(QWidget *parent)
 		QString displayText = coordinate.toString().replace(" ", ", ").prepend("CRS: " + crsAuthId + " - ");
 		coordinateLabel->setText(displayText);
 		});
+	//数据处理，C4.5
+	jctreeView=ui.jctreeView;
 }
 
 CUGGIS::~CUGGIS()
-{}
+{
+	//delete m_ID3andC4->pTree;
+}
 
 void CUGGIS::onCurrentLayerChanged(QgsMapLayer* layer)//检查给定的图层是否为特定类型的矢量图层（例如Shapefile），并将其路径存储在成员变量m_curMapLayer中。
 {
@@ -268,11 +272,6 @@ void CUGGIS::removeLayer()
 
 
 
-void CUGGIS::on_actionConvexHull_triggered()
-{
-	m_convexHull=new ConvexHull();
-	m_convexHull->show();
-}
 
 void CUGGIS::autoSelectAddedLayer(QList<QgsMapLayer*> layers)//找到列表中的第一个图层，并将其设置为当前活动的图层
 {

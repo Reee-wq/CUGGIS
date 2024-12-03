@@ -131,6 +131,12 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="copyTool.cpp" />
+    <ClCompile Include="decisionTree.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="decisionTreeUI.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="deleteTool.cpp" />
     <ClCompile Include="DragShow.cpp" />
     <ClCompile Include="DynamicProj.cpp" />
@@ -157,6 +163,10 @@
     <ClCompile Include="SymbolManager.cpp" />
     <ClCompile Include="SymbolModify.cpp" />
     <ClCompile Include="ToolBox.cpp" />
+    <ClCompile Include="total.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="TreeNodeItem.cpp" />
     <ClCompile Include="VectorLayerPropertiesWidget.cpp" />
     <QtRcc Include="CUGGIS.qrc" />
     <QtUic Include="Buffer.ui" />
@@ -175,11 +185,18 @@
     <QtUic Include="SymbolExport.ui" />
     <QtUic Include="SymbolManager.ui" />
     <QtUic Include="SymbolModify.ui" />
+    <QtUic Include="total.ui">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="total.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </QtMoc>
+    <ClInclude Include="TreeNodeItem.h" />
     <QtMoc Include="Buffer.h" />
     <QtMoc Include="CircleCut.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
@@ -195,6 +212,9 @@
     <QtMoc Include="deleteTool.h" />
     <QtMoc Include="moveTool.h" />
     <QtMoc Include="parallelTool.h" />
+    <ClInclude Include="decisionTree.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="StyleManager.h" />
     <QtMoc Include="SymbolModify.h" />
     <QtMoc Include="SymbolManager.h" />

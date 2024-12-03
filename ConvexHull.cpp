@@ -1,4 +1,5 @@
 #include "ConvexHull.h"
+#include "CUGGIS.h"
 #include <QPainter>
 #include <QMessageBox>
 #include <QFileDialog>
@@ -17,21 +18,17 @@ ConvexHull::ConvexHull(QWidget *parent)
     // 设置lineEdit为只读
     lineEditPoiCount->setReadOnly(true);
     lineEditPoiCoords->setReadOnly(true);
-    //// 设置sizePolicy
-    //lineEditPoiCount->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
-    //lineEditPoiCoords->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
-    //// 获取QPushButton控件
-    //QPushButton* startButton = ui.Start;
-    //QPushButton* exportButton = ui.Export;
-    //QPushButton* clearButton = ui.Clear;
-    //startButton->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
-    //exportButton->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
-    //clearButton->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
+
     adjustSize();  // 使主窗口大小自适应内容大小
 }
 
 ConvexHull::~ConvexHull()
 {}
+void CUGGIS::on_actionConvexHull_triggered()
+{
+    m_convexHull = new ConvexHull();
+    m_convexHull->show();
+}
 
 int ConvexHull::crossProduct(const QPoint & O, const QPoint & A, const QPoint & B)
 {

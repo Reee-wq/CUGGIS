@@ -62,6 +62,9 @@
     <Filter Include="4SpatialAnalysis\凸包">
       <UniqueIdentifier>{3ac02c6b-6262-4b1f-82db-fbbf3be1fa93}</UniqueIdentifier>
     </Filter>
+    <Filter Include="DecisionStructure\x">
+      <UniqueIdentifier>{35b17fa5-ad70-4274-9315-aa2bad20ba5f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="CUGGIS.qrc">
@@ -180,6 +183,18 @@
     <ClCompile Include="ConvexHull.cpp">
       <Filter>4SpatialAnalysis\凸包</Filter>
     </ClCompile>
+    <ClCompile Include="decisionTree.cpp">
+      <Filter>DecisionStructure\x</Filter>
+    </ClCompile>
+    <ClCompile Include="decisionTreeUI.cpp">
+      <Filter>DecisionStructure\x</Filter>
+    </ClCompile>
+    <ClCompile Include="TreeNodeItem.cpp">
+      <Filter>DecisionStructure</Filter>
+    </ClCompile>
+    <ClCompile Include="total.cpp">
+      <Filter>DecisionStructure\x</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />
@@ -196,6 +211,12 @@
     </ClInclude>
     <ClInclude Include="StyleManager.h">
       <Filter>2SymbolManager</Filter>
+    </ClInclude>
+    <ClInclude Include="decisionTree.h">
+      <Filter>DecisionStructure\x</Filter>
+    </ClInclude>
+    <ClInclude Include="TreeNodeItem.h">
+      <Filter>DecisionStructure</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -231,6 +252,9 @@
     </QtUic>
     <QtUic Include="ConvexHull.ui">
       <Filter>4SpatialAnalysis\凸包</Filter>
+    </QtUic>
+    <QtUic Include="total.ui">
+      <Filter>DecisionStructure\x</Filter>
     </QtUic>
   </ItemGroup>
   <ItemGroup>
@@ -308,6 +332,9 @@
     </QtMoc>
     <QtMoc Include="ConvexHull.h">
       <Filter>4SpatialAnalysis\凸包</Filter>
+    </QtMoc>
+    <QtMoc Include="total.h">
+      <Filter>DecisionStructure\x</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

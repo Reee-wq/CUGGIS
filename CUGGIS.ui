@@ -13,7 +13,18 @@
   <property name="windowTitle">
    <string>CUGGIS</string>
   </property>
-  <widget class="QWidget" name="centralWidget"/>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QGraphicsView" name="jctreeView">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>370</y>
+      <width>331</width>
+      <height>181</height>
+     </rect>
+    </property>
+   </widget>
+  </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
@@ -125,6 +136,7 @@
      <string>数据处理</string>
     </property>
     <addaction name="actionID3"/>
+    <addaction name="actionC45"/>
    </widget>
    <addaction name="menu"/>
    <addaction name="menu_2"/>
@@ -591,6 +603,11 @@
    </property>
    <property name="text">
     <string>Redo</string>
+   </property>
+  </action>
+  <action name="actionC45">
+   <property name="text">
+    <string>C45</string>
    </property>
   </action>
  </widget>

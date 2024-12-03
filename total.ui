@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>totalClass</class>
+ <widget class="QMainWindow" name="totalClass">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>773</width>
+    <height>598</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>773</width>
+    <height>598</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>total</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QVBoxLayout" name="verticalLayout_6">
+    <item>
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="styleSheet">
+       <string notr="true">font: 10pt &quot;Microsoft YaHei UI&quot;;
+font: 700 9pt &quot;Microsoft YaHei UI&quot;;</string>
+      </property>
+      <property name="currentIndex">
+       <number>5</number>
+      </property>
+      <widget class="QWidget" name="chess">
+       <attribute name="title">
+        <string>棋盘</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_7">
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_6">
+          <item>
+           <widget class="QPushButton" name="openChessFile">
+            <property name="styleSheet">
+             <string notr="true">font: 9pt &quot;Microsoft YaHei UI&quot;;</string>
+            </property>
+            <property name="text">
+             <string>绘制棋盘</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="calMaxArea">
+            <property name="styleSheet">
+             <string notr="true">font: 9pt &quot;Microsoft YaHei UI&quot;;</string>
+            </property>
+            <property name="text">
+             <string>计算最大涂色区域</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QGraphicsView" name="chessView">
+          <property name="minimumSize">
+           <size>
+            <width>745</width>
+            <height>387</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="convex_hull">
+       <attribute name="title">
+        <string>凸包</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_5">
+        <item>
+         <widget class="QSplitter" name="splitter_6">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <widget class="QPushButton" name="openHullFile">
+           <property name="styleSheet">
+            <string notr="true">font: 9pt &quot;Microsoft YaHei UI&quot;;</string>
+           </property>
+           <property name="text">
+            <string>绘制坐标点</string>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="calConvexHull">
+           <property name="styleSheet">
+            <string notr="true">font: 9pt &quot;Microsoft YaHei UI&quot;;</string>
+           </property>
+           <property name="text">
+            <string>计算凸包</string>
+           </property>
+          </widget>
+          <widget class="QRadioButton" name="startEditHull">
+           <property name="styleSheet">
+            <string notr="true">font: 9pt &quot;Microsoft YaHei UI&quot;;</string>
+           </property>
+           <property name="text">
+            <string>开始编辑</string>
+           </property>
+          </widget>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGraphicsView" name="convexHullView"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="decisonTree">
+       <attribute name="title">
+        <string>决策树</string>
+       </attribute>
+       <layout class="QHBoxLayout" name="horizontalLayout_4">
+        <item>
+         <widget class="QGraphicsView" name="treeView"/>
+        </item>
+        <item>
+         <widget class="QSplitter" name="splitter_3">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <widget class="QWidget" name="layoutWidget">
+           <layout class="QVBoxLayout" name="verticalLayout">
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_10">
+              <item>
+               <widget class="QPushButton" name="C45PushButton">
+                <property name="text">
+                 <string>C45算法建树</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="ID3PushButton">
+                <property name="text">
+                 <string>ID3算法建树</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="QPushButton" name="predictPushButton">
+              <property name="text">
+               <string>预测</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="layoutWidget">
+           <layout class="QGridLayout" name="gridLayout">
+            <item row="0" column="0">
+             <layout class="QHBoxLayout" name="horizontalLayout_2">
+              <item>
+               <widget class="QLabel" name="label">
+                <property name="text">
+                 <string>Weather:</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="WeatherLineEdit"/>
+              </item>
+             </layout>
+            </item>
+            <item row="1" column="0">
+             <layout class="QHBoxLayout" name="horizontalLayout_3">
+              <item>
+               <widget class="QLabel" name="label_2">
+                <property name="text">
+                 <string>Temperature:</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="TemperatureLineEdit"/>
+              </item>
+             </layout>
+            </item>
+            <item row="2" column="0">
+             <layout class="QHBoxLayout" name="horizontalLayout_5">
+              <item>
+               <widget class="QLabel" name="label_3">
+                <property name="text">
+                 <string>Humidity:</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="HumidityLineEdit"/>
+              </item>
+             </layout>
+            </item>
+            <item row="3" column="0">
+             <layout class="QHBoxLayout" name="horizontalLayout_8">
+              <item>
+               <widget class="QLabel" name="label_4">
+                <property name="text">
+                 <string>Wind:</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="WindLineEdit"/>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="navigate">
+       <attribute name="title">
+        <string>校园导航</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_5">
+        <item row="0" column="0">
+         <widget class="QGraphicsView" name="navigateView"/>
+        </item>
+        <item row="0" column="1">
+         <widget class="QSplitter" name="splitter_9">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <widget class="QWidget" name="layoutWidget">
+           <layout class="QHBoxLayout" name="horizontalLayout">
+            <item>
+             <widget class="QPushButton" name="openSchoolFile">
+              <property name="text">
+               <string>打开校园平面图</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="startNavigate">
+              <property name="text">
+               <string>路径查询</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QSplitter" name="splitter_8">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <widget class="QSplitter" name="splitter_7">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <widget class="QSplitter" name="splitter">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <widget class="QLabel" name="label_8">
+              <property name="text">
+               <string>场所信息：</string>
+              </property>
+             </widget>
+             <widget class="QLabel" name="label_6">
+              <property name="text">
+               <string>起点：</string>
+              </property>
+             </widget>
+             <widget class="QLabel" name="label_7">
+              <property name="text">
+               <string>终点：</string>
+              </property>
+             </widget>
+            </widget>
+            <widget class="QWidget" name="layoutWidget">
+             <layout class="QVBoxLayout" name="verticalLayout_2">
+              <item>
+               <widget class="QComboBox" name="placeInfoBox"/>
+              </item>
+              <item>
+               <widget class="QComboBox" name="startBox"/>
+              </item>
+              <item>
+               <widget class="QComboBox" name="endBox"/>
+              </item>
+             </layout>
+            </widget>
+           </widget>
+           <widget class="QPlainTextEdit" name="placeInfoExplain"/>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="IDW">
+       <attribute name="title">
+        <string>反距离加权</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_4">
+        <item row="0" column="0">
+         <widget class="QSplitter" name="splitter_2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <widget class="QPushButton" name="openIDW_File">
+           <property name="text">
+            <string>绘制样本点</string>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="openContour">
+           <property name="text">
+            <string>绘制等高线</string>
+           </property>
+          </widget>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <layout class="QHBoxLayout" name="horizontalLayout_9">
+          <item>
+           <widget class="QLabel" name="label_5">
+            <property name="text">
+             <string>临近点个数：</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="nearLineEdit"/>
+          </item>
+         </layout>
+        </item>
+        <item row="0" column="2">
+         <widget class="QRadioButton" name="startInsert">
+          <property name="text">
+           <string>开始插值</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0" colspan="3">
+         <widget class="QGraphicsView" name="IDW_View"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="TIN">
+       <attribute name="title">
+        <string>TIN构建</string>
+       </attribute>
+       <layout class="QHBoxLayout" name="horizontalLayout_7">
+        <item>
+         <widget class="QSplitter" name="splitter_5">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <widget class="QGraphicsView" name="TIN_View"/>
+          <widget class="QWidget" name="">
+           <layout class="QVBoxLayout" name="verticalLayout_4">
+            <item>
+             <widget class="QPushButton" name="CreateTINpushButton">
+              <property name="text">
+               <string>构建TIN</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_3">
+              <item>
+               <widget class="QSplitter" name="splitter_4">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <widget class="QPushButton" name="findPushButton">
+                 <property name="text">
+                  <string>查询</string>
+                 </property>
+                </widget>
+                <widget class="QLineEdit" name="IndexLineEdit">
+                 <property name="styleSheet">
+                  <string notr="true">font: 9pt &quot;Microsoft YaHei UI&quot;;</string>
+                 </property>
+                </widget>
+               </widget>
+              </item>
+              <item>
+               <widget class="QTextEdit" name="OutputTextEdit"/>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <action name="actionConvex">
+   <property name="text">
+    <string>凸包</string>
+   </property>
+  </action>
+  <action name="actionTree">
+   <property name="text">
+    <string>决策树</string>
+   </property>
+  </action>
+  <action name="actionNavig">
+   <property name="text">
+    <string>导航</string>
+   </property>
+  </action>
+  <action name="actionIDW">
+   <property name="text">
+    <string>反距离加权插值</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="total.qrc"/>
+ </resources>
+ <connections/>
+</ui>

@@ -54,7 +54,8 @@
 #include "qgsmaptoolselect.h"
 #include "CircleCut.h"
 #include "PolygonCut.h"
-
+#include "decisionTree.h"
+//#include "total.h"
 
 class CUGGIS : public QMainWindow
 {
@@ -63,6 +64,10 @@ class CUGGIS : public QMainWindow
 public:
     CUGGIS(QWidget *parent = nullptr);
     ~CUGGIS();
+    static CUGGIS* instance() {
+        static CUGGIS instance;  // 局部静态变量，确保只有一个实例
+        return &instance;
+    }
 
 private:
     Ui::CUGGISClass ui;
@@ -90,7 +95,14 @@ private:
     //4矢量，地理处理，凸包
     ConvexHull* m_convexHull;
     //数据处理，ID3
-    ID3andC4* m_ID3andC4;
+     //决策树对象指针
+    decisionTree* tree;
+    treeNode* detree;
+    QGraphicsScene* scene;
+    QGraphicsView* jctreeView;
+    void drawTree();
+    void drawTreeRecursive(treeNode* node, int x, int y, int depth);
+    void visualizeTree(QGraphicsScene* scene, TreeRoot root, int x, int y, int level, int offset);
 
 public:
     // 图层管理器
@@ -121,6 +133,9 @@ public:
     QgsMapToolSelect* m_pSelectTool;
     CircleCut* m_pCircleCut;
     PolygonCut* m_pPolygonCut;
+  //数据处理，ID3andC4
+    ID3andC4* m_ID3andC4;
+    
 public slots:
     //1.1工程,新建工程
     void on_actionNewProject_triggered();
@@ -189,6 +204,7 @@ public slots:
 
  //数据处理，ID3
  void on_actionID3_triggered();
+ void on_actionC45_triggered();
 
  protected:
      //1.2从文件树目录拖拽，打开文件
